@@ -713,7 +713,7 @@ var AppRoutes = [
         children: [
             {
                 path: '',
-                redirectTo: 'dashboard/default',
+                redirectTo: 'list-order',
                 pathMatch: 'full'
             }, {
                 path: 'home',
