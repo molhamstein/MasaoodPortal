@@ -1,0 +1,6 @@
+<div class="container">
+
+  <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [currentPage]="currentPage" [data]="arrayUsers"
+    (changePage)="changePages($event)" (actionOnRow)="action($event)">
+  </app-custom-table>
+</div>

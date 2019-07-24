@@ -1,0 +1,11 @@
+<!--component html goes here -->
+{{x|json}}
+
+{{"hello"|translate}}
+
+<app-custom-table [data]="data" [fields]="fields" (someEvent)="test(event)"></app-custom-table>
+
+
+<app-upload-img [imageUrl]="imageUrl" (getImageUrlChange)="imageUrlChangeCallback($event)"></app-upload-img>
+
+{{imageUrl}}

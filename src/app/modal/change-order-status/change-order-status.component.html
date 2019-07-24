@@ -1,0 +1,38 @@
+<div class="cd-popup" role="alert">
+
+  <div class="cd-popup-container">
+    <div class="cd-popup-header">
+      <h4>{{"MODAL.CHANGESTATUS.TITLE"| translate}}</h4>
+    </div>
+    <div class="row" style="padding :20px 10px;">
+      <div class="col-sm-6">
+        <select name="select" class="form-control form-control-inverse" (change)="changeStatus($event.target.value)">
+          <option *ngFor="let oneState of statusList" [value]="oneState.value"
+            [attr.selected]="oneState.value == status ? true : null">
+            {{"GLOBAL.STATUSLIST."+ oneState.label|translate}}
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-6" *ngIf="status=='pending' && order.centerId==''">
+        <select name="select" class="form-control form-control-inverse" (change)="changeCenter($event.target.value)">
+          <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.CENTER'|translate}}</option>
+          <option *ngFor="let oneCenter of center" [value]="oneCenter.id"
+            [attr.selected]="oneCenter.id == centerId ? true : null">
+            {{oneCenter[languageKey['name']]}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <ul class="cd-buttons">
+      <li (click)="change()">
+        {{"GLOBAL.CHANGE"| translate}}
+      </li>
+      <li (click)="close()">
+        {{"GLOBAL.CANCEL"| translate}}
+      </li>
+    </ul>
+    <!-- <a href="#0" class="cd-popup-close img-replace"></a> -->
+  </div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->

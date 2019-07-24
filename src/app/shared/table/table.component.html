@@ -1,0 +1,52 @@
+<div class="row">
+
+  <table class="table table-bordered table-striped ">
+
+    <thead>
+      <tr>
+        <th *ngFor="let oneField of fields">{{oneField.label|translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let onerow of data;let index=index">
+        <td *ngFor="let oneField of fields">
+          <span *ngIf="oneField.type=='string'"> {{onerow[oneField.key]}}</span>
+          <strong *ngIf="oneField.type=='price'" class="badge badge-info"> {{onerow[oneField.key]}}</strong>
+
+          <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='unavailable')" class="badge badge-danger">
+            {{"GLOBAL.STATUSLIST."+ onerow[oneField.key]|translate}}</strong>
+          <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='available')" class="badge badge-success">
+            {{"GLOBAL.STATUSLIST."+ onerow[oneField.key]|translate}}</strong>
+
+          <strong
+            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='pending' || onerow[oneField.key]=='assigned')"
+            class="badge badge-warning">
+            {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
+
+          <i *ngIf="oneField.type=='gender'&& onerow[oneField.key]=='female'" style="color: #fc6180;font-size: 20px"
+            class="fa fa-female" aria-hidden="true"></i>
+          <i *ngIf="oneField.type=='gender'&& onerow[oneField.key]=='male'" style="color: #4680ff;font-size: 20px"
+            class="fa fa-male" aria-hidden="true"></i>
+          <span *ngIf="oneField.type=='date'">{{formatDate(onerow[oneField.key])}}</span>
+          <span *ngIf="oneField.type=='object'">{{getByStringKey(onerow,oneField.key)}}</span>
+          <div *ngIf="oneField.type=='buttons'">
+            <button style="margin: 0px 5px" *ngFor="let oneButton of oneField.buttons"
+              (click)="action(onerow.id,oneButton.action,index)" class="btn btn-primary"
+              type="button">{{oneButton.label|translate}}
+            </button>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="row" *ngIf="withPage">
+  <pagination [totalItems]="count" [itemsPerPage]="limit" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
+    [boundaryLinks]="true"></pagination>
+  <!-- <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div> -->
+</div>

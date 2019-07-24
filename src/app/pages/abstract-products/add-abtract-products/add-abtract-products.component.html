@@ -1,0 +1,96 @@
+<form (ngSubmit)="onFormSubmit()" [formGroup]="abtractProductForm" class="levelForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.NAME_AR"|translate}}</label>
+          <input class="form-control" formControlName="nameAr" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.NAME_AR'|translate}}">
+          <label *ngIf="abtractProductForm.hasError('required','nameAr') && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.NAME_EN"|translate}}</label>
+          <input class="form-control" formControlName="nameEn" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.NAME_EN'|translate}}">
+          <label *ngIf="abtractProductForm.hasError('required','nameEn') && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-12">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.DESCRIPTION_AR"|translate}}</label>
+          <textarea class="form-control" formControlName="descriptionAr" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.DESCRIPTION_AR'|translate}}"></textarea>
+          <label *ngIf="abtractProductForm.hasError('required','descriptionAr') && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-12">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.DESCRIPTION_EN"|translate}}</label>
+          <textarea class="form-control" formControlName="descriptionEn" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.DESCRIPTION_EN'|translate}}"></textarea>
+          <label *ngIf="abtractProductForm.hasError('required','descriptionEn') && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.GENDER'|translate}}</label>
+          <select formControlName="gender" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.GENDER'|translate}}</option>
+            <option *ngFor="let oneGender of genders" [selected]="" [value]="oneGender.value">
+              {{"GLOBAL.GENDERS."+oneGender.label|translate}}
+            </option>
+          </select>
+          <label *ngIf="abtractProductForm.hasError('required','gender') && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.GRADE'|translate}}</label>
+          <select formControlName="gradeId" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.GRADE'|translate}}</option>
+            <option *ngFor="let oneGrades of grades" [selected]="" [value]="oneGrades.id">
+              {{oneGrades[languageKey.name]|translate}}
+            </option>
+          </select>
+          <label *ngIf="abtractProductForm.hasError('required','grade') && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <app-upload-img [isMultiImg]="true" [arrayImageUrl]="arrayImageUrl"
+          (getarrayImageUrlChange)="imageUrlChangeCallback($event)"></app-upload-img>
+      </div>
+      <div class="col-sm-12">
+        <label *ngIf="arrayImageUrl.length==0 && isSubmitted"
+          class="text-danger errorLabel">{{'ERROR_FORM.ERROR_IMAGE_REQUIRED'|translate}}</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button [disabled]="submitted" (click)="back()" class="btn btn-danger" type="button">
+          {{"GLOBAL.BACK"|translate}}
+        </button>
+        <button *ngIf="!isUpdate" [disabled]="submitted" class="btn btn-success" type="submit">
+          {{"GLOBAL.ADD"|translate}}
+        </button>
+        <!-- <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i> -->
+        <button *ngIf="isUpdate" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"GLOBAL.UPDATE"|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

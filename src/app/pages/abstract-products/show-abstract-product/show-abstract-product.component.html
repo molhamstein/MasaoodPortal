@@ -1,0 +1,78 @@
+<div class="container" *ngIf="abstractProduct">
+  <div class="row">
+    <div class="col-sm col-sm-6">
+      <div class="form-group">
+        <b for="numberOfTimes">{{"GLOBAL.NAME_AR"|translate}}</b>
+        <label>{{abstractProduct.nameAr}}</label>
+      </div>
+    </div>
+    <div class="col-sm col-sm-6">
+      <div class="form-group">
+        <b for="numberOfTimes">{{"GLOBAL.NAME_EN"|translate}}</b>
+        <label>{{abstractProduct.nameEn}}</label>
+      </div>
+    </div>
+
+    <div class="col-sm col-sm-12">
+      <div class="form-group">
+        <b for="numberOfTimes">{{"GLOBAL.DESCRIPTION_AR"|translate}}</b>
+        <label>{{abstractProduct.descriptionAr}}</label>
+
+      </div>
+    </div>
+
+    <div class="col-sm col-sm-12">
+      <div class="form-group">
+        <b for="numberOfTimes">{{"GLOBAL.DESCRIPTION_EN"|translate}}</b>
+        <label>{{abstractProduct.descriptionEn}}</label>
+      </div>
+    </div>
+
+    <div class="col-sm col-sm-6">
+      <div class="form-group">
+        <b for="type">{{'GLOBAL.GENDER'|translate}}</b>
+        <label>{{"GLOBAL.GENDERS."+abstractProduct.gender|translate}}</label>
+      </div>
+    </div>
+
+    <div class="col-sm col-sm-6">
+      <div class="form-group">
+        <b for="type">{{'GLOBAL.GRADE'|translate}}</b>
+        <label>
+          {{abstractProduct.grade[languageKey.name]|translate}}
+        </label>
+      </div>
+    </div>
+    <div class="col-sm col-sm-6">
+      <div class="form-group">
+        <b for="type">{{'GLOBAL.CREATED_AT'|translate}}</b>
+        <label>{{formatDate(abstractProduct.createdAt)}}</label>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12">
+      <app-upload-img [isWithAdd]="false" [isMultiImg]="true" [arrayImageUrl]="arrayImageUrl"
+        (getarrayImageUrlChange)="imageUrlChangeCallback($event)"></app-upload-img>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm submit-col">
+      <button [disabled]="submitted" (click)="back()" class="btn btn-danger" type="button">
+        {{"GLOBAL.BACK"|translate}}
+      </button>
+    </div>
+  </div>
+
+  <div style="padding: 30px 0px;">
+    <button (click)="addProduct()" class="btn btn-success" style="float: right;" type="button">
+      {{"GLOBAL.ADDPRODUCT"|translate}}
+    </button>
+  </div>
+  <div style="padding: 10px 0px;">
+    <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayProduct"
+      (changePage)="changePages($event)" (actionOnRow)="action($event)">
+    </app-custom-table>
+  </div>
+</div>
