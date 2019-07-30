@@ -6,7 +6,7 @@
           <label for="numberOfTimes">{{"GLOBAL.CODE"|translate}}</label>
           <input class="form-control" formControlName="code" type="number" min="1" (input)="isSubmitted=false;message=''"
             placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.CODE'|translate}}">
-          <label *ngIf="productForm.hasError('required','code') && isSubmitted"
+          <label *ngIf="productForm.get('code').invalid  && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
       </div>
@@ -15,7 +15,7 @@
           <label for="numberOfTimes">{{"GLOBAL.PRICE"|translate}}</label>
           <input class="form-control" formControlName="price" (input)="isSubmitted=false;message=''"
             placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.PRICE'|translate}}">
-          <label *ngIf="productForm.hasError('required','price') && isSubmitted"
+          <label *ngIf="productForm.get('price').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
       </div>
@@ -29,7 +29,7 @@
               {{"GLOBAL.STATUSLIST."+oneState.label|translate}}
             </option>
           </select>
-          <label *ngIf="productForm.hasError('required','status') && isSubmitted"
+          <label *ngIf="productForm.get('status').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
       </div>
@@ -43,7 +43,7 @@
               {{oneSize[languageKey.name]|translate}}
             </option>
           </select>
-          <label *ngIf="productForm.hasError('required','size') && isSubmitted"
+          <label *ngIf="productForm.get('sizeId').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
       </div>
@@ -51,14 +51,14 @@
 
     <div class="row">
       <div class="col-sm submit-col">
-        <button [disabled]="submitted" (click)="back()" class="btn btn-danger" type="button">
+        <button  (click)="back()" class="btn btn-danger" type="button">
           {{"GLOBAL.BACK"|translate}}
         </button>
-        <button *ngIf="!isUpdate" [disabled]="submitted" class="btn btn-success" type="submit">
+        <button *ngIf="!isUpdate"  class="btn btn-success" type="submit">
           {{"GLOBAL.ADD"|translate}}
         </button>
         <!-- <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i> -->
-        <button *ngIf="isUpdate" [disabled]="submitted" class=" btn btn-success" type="submit">
+        <button *ngIf="isUpdate"  class=" btn btn-success" type="submit">
           {{"GLOBAL.UPDATE"|translate}}
         </button>
       </div>

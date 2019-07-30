@@ -23,7 +23,9 @@ export class ListCenterComponent implements OnInit {
     { "key": "statesCount", "label": "GLOBAL.STATESCOUNT", "type": "price" },
     {
       "type": "buttons", "label": "", "buttons": [
-        { "action": "edit", "label": "GLOBAL.EDIT" }]
+        { "action": "edit", "label": "GLOBAL.EDIT" },
+        { "action": "show", "label": "GLOBAL.SHOW" }
+      ]
     }
   ]
   constructor(private centerSer: CenterService, private mainSer: MainService) { }
@@ -55,6 +57,10 @@ export class ListCenterComponent implements OnInit {
     if (data.event == 'edit') {
       this.mainSer.globalServ.goTo("edit-center/" + data.id)
     }
+    else if (data.event == 'show') {
+      this.mainSer.globalServ.goTo("show-center/" + data.id)
+    }
+
   }
 
 }

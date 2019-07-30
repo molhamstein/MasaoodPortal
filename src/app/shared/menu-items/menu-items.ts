@@ -1,3 +1,4 @@
+import { MainService } from './../../service/main.service';
 import { Injectable } from '@angular/core';
 
 export interface BadgeItem {
@@ -30,6 +31,17 @@ export interface Menu {
   main: MainMenuItems[];
 }
 
+const MENUITEMSOperator = [
+  {
+    label: '',
+    main: [{
+      state: 'list-order',
+      name: 'MAINMENU.ORDER',
+      type: 'link',
+      icon: 'ti-shopping-cart '
+    }]
+  }
+]
 const MENUITEMS = [
   {
     label: '',
@@ -37,24 +49,24 @@ const MENUITEMS = [
       state: 'list-abstract-product',
       name: 'MAINMENU.ABSTRACTPRODUCT',
       type: 'link',
-      icon: 'ti-reload rotate-refresh'
+      icon: 'ti-package '
     }, {
       state: 'list-order',
       name: 'MAINMENU.ORDER',
       type: 'link',
-      icon: 'ti-reload rotate-refresh'
+      icon: 'ti-shopping-cart '
     },
     {
       state: 'list-user',
       name: 'MAINMENU.USER',
       type: 'link',
-      icon: 'ti-reload rotate-refresh'
+      icon: 'ti-user '
     },
     {
       state: 'list-center',
       name: 'MAINMENU.CENTER',
       type: 'link',
-      icon: 'ti-reload rotate-refresh'
+      icon: 'ti-map-alt '
     },
     ]
   },
@@ -209,7 +221,7 @@ const MENUITEMS = [
   //       short_label: 'A',
   //       name: 'Animations',
   //       type: 'link',
-  //       icon: 'ti-reload rotate-refresh'
+  //       icon: 'ti-reload '
   //     }
   //   ]
   // },
@@ -685,9 +697,12 @@ const MENUITEMS = [
 @Injectable()
 export class MenuItems {
   getAll(): Menu[] {
-    return MENUITEMS;
+    if (this.mainServ.authServ.getRole() == 'admin')
+      return MENUITEMS;
+    else
+      return MENUITEMSOperator
   }
-
+  constructor(private mainServ: MainService) { }
   /*add(menu: Menu) {
     MENUITEMS.push(menu);
   }*/

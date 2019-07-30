@@ -23,13 +23,62 @@ export class OrderService {
   }
 
   cancelOrder(id, callback) {
-    this.mainSer.APIServ.put({ "index": "cancelOrders", "variables": { "id": id }},{})
+    this.mainSer.APIServ.put({ "index": "cancelOrders", "variables": { "id": id } }, {})
       .subscribe((data: any) => {
         callback(null, {})
       }, error => {
         callback(error, null)
       })
   }
+
+  assignOrder(id, centerId, callback) {
+    this.mainSer.APIServ.put({ "index": "assignOrders", "variables": { "id": id } }, { "center": centerId })
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
+
+  deliverOrder(id, callback) {
+    this.mainSer.APIServ.put({ "index": "deliverOrders", "variables": { "id": id } }, {})
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
+
+  deliveringOrder(id, callback) {
+    this.mainSer.APIServ.put({ "index": "deliveringOrders", "variables": { "id": id } }, {})
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
+
+  packOrder(id, callback) {
+    this.mainSer.APIServ.put({ "index": "packOrders", "variables": { "id": id } }, {})
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
+  changeOrder(type, id, data, callback) {
+    this.mainSer.APIServ.put({ "index": type, "variables": { "id": id } }, data)
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
 
 
 }

@@ -7,15 +7,18 @@ export class Center {
   lng: number
   statesId: number[]
   states: any[];
-
+  status: string;
+  createdAt: Date;
 
   constructor(center) {
     this.id = center.id || null;
     this.nameEn = center.nameEn || "";
     this.nameAr = center.nameAr || "";
+    this.status = center.status || "";
     this.lat = center.lat || 0;
     this.lng = center.lng || 0;
     this.states = center.states || [];
+    this.createdAt = center.createdAt || new Date()
 
     if (center.states) {
       this.statesCount = center.states.length

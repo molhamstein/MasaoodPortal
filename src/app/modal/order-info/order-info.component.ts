@@ -15,11 +15,15 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class OrderInfoComponent implements OnInit {
   @Input() order;
 
+  public viewMap = false;
   public languageKey = this.mainSer.globalServ.getLanguageKey()
 
   constructor(public activeModal: NgbActiveModal, private mainSer: MainService) {
   }
 
+  toggleViewMap() {
+    this.viewMap = !this.viewMap
+  }
 
   fields = [
     { "key": "count", "label": "GLOBAL.COUNT", "type": "price" },
@@ -27,7 +31,7 @@ export class OrderInfoComponent implements OnInit {
     { "key": "product.price", "label": "GLOBAL.PRICE", "type": "object" },
     { "key": "product.size." + this.languageKey['name'], "label": "GLOBAL.SIZE", "type": "object" },
     { "key": "product.abstractProduct." + this.languageKey['name'], "label": "GLOBAL.ABSTRACTPRODUCT", "type": "object" },
-    
+
     // { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date" },
   ]
 
@@ -39,14 +43,14 @@ export class OrderInfoComponent implements OnInit {
     console.log(this.order)
   }
 
-  changeState(){
+  changeState() {
     this.activeModal.close(true)
   }
   close() {
     this.activeModal.close()
   }
 
-  chnage(){
-    
+  chnage() {
+
   }
 }

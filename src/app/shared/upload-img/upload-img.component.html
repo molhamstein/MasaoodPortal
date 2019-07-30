@@ -40,8 +40,10 @@
       </div>
     </div>
   </div>
-  <div *ngFor="let image of arrayImageUrl;let i = index" class="multiImgCont">
+  <div *ngFor="let image of arrayImageUrl;let index = index" class="multiImgCont" style="position: relative;">
     <img class="imgCustim" src="{{image.file}}" />
+    <i *ngIf="isWithAdd" class="fa fa-times-circle deleteIcon" aria-hidden="true" (click)="deleteImg(index)"></i>
+
   </div>
   <div *ngFor="let image of imageOnLoadArray;let i = index" class="AddNewForm-imagescontainer-smallimage multiImgCont"
     style="position: relative;">

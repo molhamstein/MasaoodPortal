@@ -1,0 +1,89 @@
+<form (ngSubmit)="onFormSubmit()" [formGroup]="centerProductForm" class="levelForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm col-sm-6" *ngIf="isUpdate && centerProductObject">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.PRODUCT"|translate}}</label>
+          <input class="form-control" disabled
+            [value]="centerProductObject.product.abstractProduct[languageKey.name] + ' ' + centerProductObject.product.abstractProduct.grade[languageKey.name]+' '+centerProductObject.product.size[languageKey.name]"
+            type="text">
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6" *ngIf="!isUpdate">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.PRODUCT"|translate}}</label>
+          <ng-select (change)="getProduct($event.target.value)"
+            [placeholder]="'GLOBAL.PRODUCT'|translate" [ngClass]="'ng-select'"
+            [options]="productOption" formControlName="productId">
+          </ng-select>
+          <label *ngIf="centerProductForm.get('productId').invalid  && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+
+        </div>
+      </div>
+      <div class=" col-sm col-sm-6">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.COUNT"|translate}}</label>
+          <input class="form-control" formControlName="count" type="number" min="1"
+            (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.COUNT'|translate}}">
+          <label *ngIf="centerProductForm.get('count').invalid  && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+      <!-- <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.PRICE"|translate}}</label>
+          <input class="form-control" formControlName="price" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.PRICE'|translate}}">
+          <label *ngIf="centerProductForm.get('price').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.STATUS'|translate}}</label>
+          <select formControlName="status" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.STATUS'|translate}}</option>
+            <option *ngFor="let oneState of statusList" [selected]="" [value]="oneState.value">
+              {{"GLOBAL.STATUSLIST."+oneState.label|translate}}
+            </option>
+          </select>
+          <label *ngIf="centerProductForm.get('status').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.SIZE'|translate}}</label>
+          <select formControlName="sizeId" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.SIZE'|translate}}</option>
+            <option *ngFor="let oneSize of sizes" [selected]="" [value]="oneSize.id">
+              {{oneSize[languageKey.name]|translate}}
+            </option>
+          </select>
+          <label *ngIf="centerProductForm.get('sizeId').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button (click)="back()" class="btn btn-danger" type="button">
+          {{"GLOBAL.BACK"|translate}}
+        </button>
+        <button *ngIf="!isUpdate" class="btn btn-success" type="submit">
+          {{"GLOBAL.ADD"|translate}}
+        </button>
+        <!-- <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i> -->
+        <button *ngIf="isUpdate" class=" btn btn-success" type="submit">
+          {{"GLOBAL.UPDATE"|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

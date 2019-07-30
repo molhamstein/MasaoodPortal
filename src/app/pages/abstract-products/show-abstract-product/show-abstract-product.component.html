@@ -59,18 +59,18 @@
 
   <div class="row">
     <div class="col-sm submit-col">
-      <button [disabled]="submitted" (click)="back()" class="btn btn-danger" type="button">
+      <button  (click)="back()" class="btn btn-danger" type="button">
         {{"GLOBAL.BACK"|translate}}
       </button>
     </div>
   </div>
 
-  <div style="padding: 30px 0px;">
+  <div  class="row" style="padding: 10px 0px;">
     <button (click)="addProduct()" class="btn btn-success" style="float: right;" type="button">
       {{"GLOBAL.ADDPRODUCT"|translate}}
     </button>
   </div>
-  <div style="padding: 10px 0px;">
+  <div style="padding: 10px 0px;" *ngIf="arrayProduct.length!=0">
     <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayProduct"
       (changePage)="changePages($event)" (actionOnRow)="action($event)">
     </app-custom-table>

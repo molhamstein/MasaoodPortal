@@ -23,16 +23,20 @@ export class AuthGuardService implements CanLoad, CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
 
-    let path = route.url[0]
+    let path = route.url[0].path
+    console.log("path")
+    console.log(path)
     if (this.mainServ.authServ.isLogin()) {
-      // if (this.mainServ.globalServ.isAllowedPage(path) == false) {
-      // this.router.navigate(["/locations"])
-      // return false;
-      // } else
+      if (this.mainServ.globalServ.isAllowedPage(path) == false) {
+        this.router.navigate(["/list-order"])
+        return false;
+      }
+      else
         return true;
+    } else {
+      this.mainServ.globalServ.goTo("/login");
+      return false;
     }
 
-    this.mainServ.globalServ.goTo("/login");
-    return false;
   }
 }

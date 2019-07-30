@@ -1,3 +1,4 @@
+import { CenterProductService } from './pages/centerProduct/center-product.service';
 import { AgmCoreModule } from '@agm/core';
 import { SelectModule } from 'ng-select';
 import { CenterService } from './pages/centers/center.service';
@@ -64,6 +65,10 @@ import { CommonModule } from '@angular/common';
 import { ListCenterComponent } from './pages/centers/list-center/list-center.component';
 import { AddCenterComponent } from './pages/centers/add-center/add-center.component';
 import { StatesService } from './pages/centers/state.service';
+import { GroupService } from './pages/users/group.service';
+import { AddUserComponent } from './pages/users/add-user/add-user.component';
+import { ShowCenterComponent } from './pages/centers/show-center/show-center.component';
+import { AddCenterProductComponent } from './pages/centerProduct/add-center-product/add-center-product.component';
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/languages/', '.json');
@@ -102,7 +107,7 @@ export function HttpLoaderFactory(http: Http) {
 
 
     // // dialog
-    ConfirmComponent, SuccessComponent, FailedComponent, OrderInfoComponent, ChangeOrderStatusComponent, ListCenterComponent, AddCenterComponent,
+    ConfirmComponent, SuccessComponent, FailedComponent, OrderInfoComponent, ChangeOrderStatusComponent, ListCenterComponent, AddCenterComponent, AddUserComponent, ShowCenterComponent,  AddCenterProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -137,7 +142,7 @@ export function HttpLoaderFactory(http: Http) {
     // main services
     AppDirectionService, AuthGuardService, MainService, GlobalService, AuthService, LoaderService, ApiService, DialogService,
     // pages services
-    CenterService, LoginService, StatesService, UploadImgService, GradeService, AbstractProductService, ProductService, SizeService, OrderService, UserService,
+    CenterService, LoginService, StatesService, UploadImgService, GradeService, AbstractProductService, ProductService, SizeService, OrderService, UserService, GroupService, CenterProductService,
     // others
     NgbActiveModal
   ],

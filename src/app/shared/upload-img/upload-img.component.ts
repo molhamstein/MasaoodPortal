@@ -71,6 +71,11 @@ export class UploadImgComponent implements OnInit {
 
   }
 
+  deleteImg(index) {
+    this.arrayImageUrl.splice(index)
+    this.getarrayImageUrlChange.emit(this.arrayImageUrl)
+
+  }
   releadImage(innerIndex, file) {
     var reader = new FileReader();
     reader.onload = function (e) {

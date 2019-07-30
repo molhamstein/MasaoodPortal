@@ -1,0 +1,50 @@
+<div class="container" *ngIf="center">
+  <div class="row">
+    <div class="col-sm col-sm-6">
+      <div class="form-group">
+        <b for="numberOfTimes">{{"GLOBAL.NAME_AR"|translate}}</b>
+        <label>{{center.nameAr}}</label>
+      </div>
+      <div class="form-group">
+        <b for="numberOfTimes">{{"GLOBAL.NAME_EN"|translate}}</b>
+        <label>{{center.nameEn}}</label>
+      </div>
+      <div class="form-group">
+        <b for="type">{{'GLOBAL.STATES'|translate}}</b>
+        <strong style="margin-right: 10px;" *ngFor="let oneState of center.states" class="badge badge-main">
+          {{oneState[languageKey.name]}}
+        </strong>
+
+        <!-- <label>{{formatDate(center.createdAt)}}</label> -->
+      </div>
+      <div class="form-group">
+        <b for="type">{{'GLOBAL.CREATED_AT'|translate}}</b>
+        <label>{{formatDate(center.createdAt)}}</label>
+      </div>
+    </div>
+    <div class="col-sm col-sm-6">
+      <agm-map [latitude]="center.lat" [longitude]="center.lng">
+        <agm-marker [latitude]="center.lat" [longitude]="center.lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm submit-col">
+      <button (click)="back()" class="btn btn-danger" type="button">
+        {{"GLOBAL.BACK"|translate}}
+      </button>
+    </div>
+  </div>
+
+  <div class="row" style="padding: 10px 0px;">
+    <button (click)="addCenterProduct()" class="btn btn-success" style="float: right;" type="button">
+      {{"GLOBAL.ADDCENTERPRODUCT"|translate}}
+    </button>
+  </div>
+  <div style="padding: 10px 0px;" *ngIf="arrayCenterProduct.length!=0">
+    <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayCenterProduct"
+      (changePage)="changePages($event)" (actionOnRow)="action($event)">
+    </app-custom-table>
+  </div>
+</div>

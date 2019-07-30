@@ -52,5 +52,8 @@ export class ListUserComponent implements OnInit {
     }
   }
 
+  addUser() {
+    this.mainSer.globalServ.goTo("add-user")
+  }
 
 }

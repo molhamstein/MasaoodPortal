@@ -1,3 +1,4 @@
+import { LoaderService } from './loader.service';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,7 +9,7 @@ import { appError } from '../models/app-error.model';
 @Injectable()
 export class ApiService {
 
-  constructor(public http: HttpClient, private authSer: AuthService) {
+  constructor(public http: HttpClient, private authSer: AuthService, private loaderSer: LoaderService) {
   }
   readonly baseUrl = "http://104.217.253.15:3434/api/v1/"
   constURL = {
@@ -24,8 +25,16 @@ export class ApiService {
     "oneCenters": "centers/{{id}}/",
     "orders": "orders/",
     "users": "users/",
+    "groups": "groups/",
     "centers": "centers/",
-    "cancelOrders":"orders/{{id}}/assign/"
+    "cancelOrders": "orders/{{id}}/cancel/",
+    "assignOrders": "orders/{{id}}/assign/",
+    "deliverOrders": "orders/{{id}}/deliver/",
+    "deliveringOrders": "orders/{{id}}/delivering/",
+    "packOrders": "orders/{{id}}/pack/",
+    "centersProducts": "centers-products/",
+    "oneCentersProducts": "centers-products/{{id}}/"
+
   }
 
 
@@ -75,6 +84,8 @@ export class ApiService {
 
 
   get(urlObject, token: string = "") {
+    this.loaderSer.display(true);
+    let self = this;
     let auth = "";
     if (token != "")
       auth = token
@@ -86,6 +97,9 @@ export class ApiService {
     let _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": auth }) };
 
     return this.http.get(url, _options)
+      .finally(function () {
+        self.loaderSer.display(false);
+      })
       .catch(this.handleError)
   }
 
@@ -93,9 +107,10 @@ export class ApiService {
 
 
   uploadImage(urlObject, data, length, token: string = ""): Observable<Response> {
+    this.loaderSer.display(true);
     let url = this.createUrlString(urlObject.index, urlObject.variables, urlObject.filter, urlObject.ordering)
     let fd = new FormData();
-    var mainthis = this;
+    var self = this;
     console.log(url)
     // return new Observable(function () {
     // mainthis.ng2ImgMax.compress(data, 0.5, true, true).subscribe((result) => {
@@ -106,23 +121,29 @@ export class ApiService {
     let auth = "";
     if (token != "")
       auth = token
-    else if (mainthis.authSer.getToken() != null) {
-      auth = mainthis.authSer.getToken();
+    else if (self.authSer.getToken() != null) {
+      auth = self.authSer.getToken();
     }
     let _options = { headers: new HttpHeaders({ "Authorization": auth }) };
     console.log("auth")
     console.log(auth)
     console.log("getToken")
-    console.log(mainthis.authSer.getToken())
-    return mainthis.http.post(url, fd, _options).timeout(90000).map((Response: Response) => {
+    console.log(self.authSer.getToken())
+    return self.http.post(url, fd, _options).timeout(90000).map((Response: Response) => {
       return (Response);
-    }).catch((mainthis.handleError));
+    })
+      .finally(function () {
+        self.loaderSer.display(false);
+      })
+      .catch((self.handleError));
     // })
     //   });
   }
 
 
   post(urlObject, data, token: string = "") {
+    this.loaderSer.display(true);
+    let self = this;
     let auth = "";
     if (token != "")
       auth = token
@@ -134,10 +155,16 @@ export class ApiService {
     let _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": auth }) };
 
     return this.http.post(url, data, _options)
+      .finally(function () {
+        self.loaderSer.display(false);
+      })
       .catch(this.handleError)
   }
 
   put(urlObject, data, token: string = "") {
+    this.loaderSer.display(true);
+    let self = this;
+
     let auth = "";
     if (token != "")
       auth = token
@@ -149,6 +176,9 @@ export class ApiService {
     let _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": auth }) };
 
     return this.http.put(url, data, _options)
+      .finally(function () {
+        self.loaderSer.display(false);
+      })
       .catch(this.handleError)
   }
 }

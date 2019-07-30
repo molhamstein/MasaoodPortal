@@ -9,6 +9,14 @@ export class AbstractProductService {
 
   }
 
+  getObjectByName(name, callback) {
+    this.mainSer.APIServ.get({ "index": "abstractProducts", "filter": { "nameEn__icontains": name }, "ordering": "-createdAt" })
+      .subscribe((data: any) => {
+        callback(null, data)
+      }, error => {
+        callback(error, null)
+      })
+  }
   getPaginationObject(limit, offset, callback) {
     this.mainSer.APIServ.get({ "index": "abstractProducts", "filter": { "limit": limit, "offset": offset }, "ordering": "-createdAt" })
       .subscribe((data: any) => {

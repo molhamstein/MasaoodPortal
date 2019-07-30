@@ -115,22 +115,22 @@
   transition: background-color 0.2s;
 }
 
-.cd-popup-container .cd-buttons li:first-child {
+.cd-popup-container .cd-buttons li:last-child {
   background: #fc7169;
-  border-radius: 0 0 0 .25em;
+  border-radius: 0px;
 }
 
-.cd-popup-container .cd-buttons li:first-child:hover {
+.cd-popup-container .cd-buttons li:last-child:hover {
   background-color: #fc8982;
   cursor: pointer;
 }
 
-.cd-popup-container .cd-buttons li:last-child {
+.cd-popup-container .cd-buttons li:first-child {
   background: #b6bece;
-  border-radius: 0 0 .25em 0;
+  border-radius: 0px;
 }
 
-.cd-popup-container .cd-buttons li:last-child:hover {
+.cd-popup-container .cd-buttons li:first-child:hover {
   background-color: #c5ccd8;
   cursor: pointer;
 }
@@ -183,4 +183,31 @@
   .cd-popup-container {
     margin: 8em auto;
   }
+}
+
+
+.customMapMarker {
+  position: absolute;
+  font-size: 20px;
+  top: -2px;
+  text-shadow: 0px 1px #272634;
+  color: #f79f00;
+}
+
+.customMapMarker:hover {
+  font-size: 26px;
+  cursor: pointer;
+  top: -4px;
+  color: #f78c00;
+}
+
+.backButton {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 2;
+}
+
+.backButton:hover {
+  cursor: pointer;
 }

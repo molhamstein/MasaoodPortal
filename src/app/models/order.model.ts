@@ -2,7 +2,7 @@ import { Center } from "./center.model";
 
 export class Order {
   id: number;
-  centerId: string;
+  centerId: number;
   center: Center;
   deliveryAddress: string
   deliveryLat: number
@@ -15,6 +15,7 @@ export class Order {
   userId: number;
   products: any[]
   user: any;
+  isDelivery: boolean;
   status: string;
 
   constructor(order) {
@@ -22,9 +23,12 @@ export class Order {
     this.userId = order.userId || null;
     this.user = order.user || null;
     this.total = order.total || 0;
-    this.centerId = order.centerId || "";
-    if (order.center)
+    this.isDelivery = order.isDelivery || false
+    this.centerId = order.centerId || null;
+    if (order.center) {
       this.center = new Center(order.center) || null;
+      this.centerId = this.center.id
+    }
     this.deliveryAddress = order.deliveryAddress || "";
     this.deliveryLat = order.deliveryLat || 0;
     this.devliveryLng = order.devliveryLng || 0;

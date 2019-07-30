@@ -5,7 +5,7 @@
     "PASSWORD": "Password"
   },
   "MAINMENU": {
-    "ABSTRACTPRODUCT": "Abstract Product",
+    "ABSTRACTPRODUCT": "Base Product",
     "ORDER": "Order",
     "USER": "User",
     "CENTER": "Center"
@@ -14,6 +14,7 @@
     "ERROR_FIELD_REQUIRED": "This field is required",
     "ERROR_VALID_EMAIL": "Please enter a valid email address",
     "ERROR_IMAGE_REQUIRED": "The image is required",
+    "CENTER_IS_REQUIRED": "The center is required",
     "LOGIN_FIELD": "Login field"
   },
   "MODAL": {
@@ -63,13 +64,21 @@
     "DESCRIPTION_AR": "Arabic Description",
     "DESCRIPTION_EN": "English Description",
     "CREATED_AT": "Created At",
-    "ABSTRACTPRODUCT": "Abstract Product",
+    "ABSTRACTPRODUCT": "Base Product",
     "CENTER": "Center",
     "STATESCOUNT": "States Count",
-    "ADDABSTRACTPRODUCT": "Add Abstract Product",
+    "ADDABSTRACTPRODUCT": "Add Base Product",
     "ADDPRODUCT": "Add Product",
+    "PRODUCT": "Proudct",
     "ADDCENTER": "Add Center",
-    "STATES":"States",
+    "ADDCENTERPRODUCT": "Add Center Product",
+    "ADDUSER": "Add User",
+    "EMAIL": "Email",
+    "LASTNAME": "Last Name",
+    "FIRSTNAME": "First Name",
+    "PASSWORD": "Password",
+    "GROUP": "Group",
+    "STATES": "States",
     "COUNT": "Count",
     "SIZE": "Size",
     "GENDER": "Gender",
@@ -87,11 +96,11 @@
       "available": "Available",
       "unavailable": "Unavailable",
       "pending": "Pending",
-      "unassigned": "Unassigned",
       "packed": "Packed",
       "indelivery": "In Delivery",
       "delivered": "Delivered",
-      "assigned": "Assigned"
+      "assigned": "Assigned",
+      "canceled": "Canceled"
     },
     "FROM": "From",
     "TO": "To"

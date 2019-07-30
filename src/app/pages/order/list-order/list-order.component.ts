@@ -4,6 +4,7 @@ import { MainService } from './../../../service/main.service';
 import { OrderService } from './../order.service';
 import { Order } from './../../../models/order.model';
 import { Component, OnInit } from '@angular/core';
+import { SelectDropdownComponent } from 'ng-select/select-dropdown.component';
 
 @Component({
   selector: 'app-list-order',
@@ -17,23 +18,20 @@ export class ListOrderComponent implements OnInit {
   public count: number = 0
   arrayOrder: Order[] = []
   public languageKey = this.mainSer.globalServ.getLanguageKey()
+  public roleType = this.mainSer.authServ.getRole()
 
 
   // Filter
-  public filter = { "status_in": null, "createdAt__gt": null, "createdAt__lt": null }
-  public statusFilter = [
-    { "label": "all", "value": null, "type": "default" },
-    { "label": "available", "value": "available", "type": "success" },
-    { "label": "pending", "value": "pending", "type": "warning" },
-    { "label": "unavailable", "value": "unavailable", "type": "danger" },
-  ]
+  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null }
+  public statusFilter = []
+
   public dateFilter = [
     { "label": "FROM", "type": "from", "value": null },
     { "label": "TO", "type": "to", "value": null },
   ]
 
   clearFilter() {
-    this.filter = { "status_in": null, "createdAt__gt": null, "createdAt__lt": null }
+    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null }
     this.dateFilter = [
       { "label": "FROM", "type": "from", "value": null },
       { "label": "TO", "type": "to", "value": null },
@@ -65,7 +63,7 @@ export class ListOrderComponent implements OnInit {
     { "key": "total", "label": "GLOBAL.TOTAL", "type": "price" },
     { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
     { "key": "user.first_name", "label": "GLOBAL.OWNER", "type": "object" },
-    { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date" },
+    { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date", "viewDate": true },
     {
       "type": "buttons", "label": "", "buttons": [
         { "action": "changeState", "label": "GLOBAL.CHANGESTATE" },
@@ -76,6 +74,16 @@ export class ListOrderComponent implements OnInit {
   constructor(private orderSer: OrderService, private mainSer: MainService, private dialogSer: DialogService) { }
 
   ngOnInit() {
+    if (this.roleType == 'operator') {
+      this.filter["center__in"] = this.mainSer.authServ.getCenterId()
+      this.statusFilter = [{ "label": "all", "value": null, "type": "default" },
+      { "label": "delivered", "value": "delivered", "type": "success" },
+      { "label": "indelivery", "value": "indelivery", "type": "success" },
+      { "label": "packed", "value": "packed", "type": "danger" },
+      { "label": "assigned", "value": "assigned", "type": "warning" },
+      { "label": "canceled", "value": "canceled", "type": "inverse" },
+      ]
+    }
     this.getData()
   }
 
@@ -101,7 +109,7 @@ export class ListOrderComponent implements OnInit {
     let self = this;
     if (data.event == 'changeState') {
       this.dialogSer.changeOrderStatus(this.arrayOrder[data.index], function (params) {
-
+        self.getData();
       })
 
       // this.mainSer.globalServ.goTo("edit-abstract-product/" + data.id)
@@ -109,7 +117,7 @@ export class ListOrderComponent implements OnInit {
     else if (data.event == 'show') {
       this.dialogSer.viewOrder(this.arrayOrder[data.index], function (params) {
         self.dialogSer.changeOrderStatus(self.arrayOrder[data.index], function (params) {
-
+          self.getData();
         })
       })
     }

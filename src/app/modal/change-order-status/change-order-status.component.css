@@ -115,22 +115,22 @@
   transition: background-color 0.2s;
 }
 
-.cd-popup-container .cd-buttons li:first-child {
+.cd-popup-container .cd-buttons li:last-child {
   background: #fc7169;
-  border-radius: 0 0 0 .25em;
+  border-radius: 0px;
 }
 
-.cd-popup-container .cd-buttons li:first-child:hover {
+.cd-popup-container .cd-buttons li:last-child:hover {
   background-color: #fc8982;
   cursor: pointer;
 }
 
-.cd-popup-container .cd-buttons li:last-child {
+.cd-popup-container .cd-buttons li:first-child {
   background: #b6bece;
-  border-radius: 0 0 .25em 0;
+  border-radius: 0px;
 }
 
-.cd-popup-container .cd-buttons li:last-child:hover {
+.cd-popup-container .cd-buttons li:first-child:hover {
   background-color: #c5ccd8;
   cursor: pointer;
 }

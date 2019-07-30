@@ -1,3 +1,4 @@
+import { MainService } from './../../service/main.service';
 import { AppDirectionService } from './../../service/app-direction.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -106,12 +107,13 @@ export class AdminComponent implements OnInit {
   configOpenRightBar: string;
   isSidebarChecked: boolean;
   isHeaderChecked: boolean;
+  username = "";
 
   @ViewChild('searchFriends') search_friends: ElementRef;
   /*  @ViewChild('toggleButton') toggle_button: ElementRef;
     @ViewChild('sideMenu') side_menu: ElementRef;*/
 
-  constructor(public menuItems: MenuItems, private dir: AppDirectionService, private router: Router) {
+  constructor(private mainSer: MainService, public menuItems: MenuItems, private dir: AppDirectionService, private router: Router) {
     this.navType = 'st2';
     this.themeLayout = 'vertical';
     this.vNavigationView = 'view1';
@@ -162,11 +164,17 @@ export class AdminComponent implements OnInit {
       console.log('dir changed');
     });
 
-  }
+    this.username = this.mainSer.authServ.getuserName()
 
+  }
+  showLoader: boolean = false
   ngOnInit() {
     this.setBackgroundPattern('pattern2');
+    this.mainSer.loaderSer.status.subscribe((val: boolean) => {
+      this.showLoader = val;
+    });
   }
+
 
   onResize(event) {
     this.innerHeight = event.target.innerHeight + 'px';

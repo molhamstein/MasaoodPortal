@@ -13,8 +13,10 @@
           </option>
         </select>
       </div>
-      <div class="col-sm-6" *ngIf="status=='pending' && order.centerId==''">
-        <select name="select" class="form-control form-control-inverse" (change)="changeCenter($event.target.value)">
+
+      <div class="col-sm-6" *ngIf="status=='assigned'">
+        <select name="select" [disabled]="roleType=='operator'" class="form-control form-control-inverse"
+          (change)="changeCenter($event.target.value)">
           <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.CENTER'|translate}}</option>
           <option *ngFor="let oneCenter of center" [value]="oneCenter.id"
             [attr.selected]="oneCenter.id == centerId ? true : null">
@@ -22,15 +24,18 @@
           </option>
         </select>
       </div>
-
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <label *ngIf="message!=''" class="text-danger errorLabel">{{message|translate}}</label>
+      </div>
     </div>
 
     <ul class="cd-buttons">
-      <li (click)="change()">
-        {{"GLOBAL.CHANGE"| translate}}
-      </li>
       <li (click)="close()">
         {{"GLOBAL.CANCEL"| translate}}
+      </li>
+      <li (click)="change()">
+        {{"GLOBAL.CHANGE"| translate}}
       </li>
     </ul>
     <!-- <a href="#0" class="cd-popup-close img-replace"></a> -->

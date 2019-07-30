@@ -1,6 +1,12 @@
 <div class="container">
 
-  <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [currentPage]="currentPage" [data]="arrayUsers"
+  <div class="row" style="padding-bottom: 10px;">
+    <button (click)="addUser()" class="btn btn-success" style="float: right;" type="button">
+      {{"GLOBAL.ADDUSER"|translate}}
+    </button>
+  </div>
+
+  <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayUsers"
     (changePage)="changePages($event)" (actionOnRow)="action($event)">
   </app-custom-table>
 </div>

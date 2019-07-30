@@ -40,8 +40,8 @@ export class TableComponent implements OnInit {
     return this.mainSer.globalServ.getByStringKey(object, keyString)
   }
 
-  formatDate(date) {
-    return this.mainSer.globalServ.formatDate(date, false)
+  formatDate(date,viewTime) {
+    return this.mainSer.globalServ.formatDate(date, viewTime)
   }
 
 }

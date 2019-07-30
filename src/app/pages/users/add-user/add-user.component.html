@@ -1,0 +1,115 @@
+<form (ngSubmit)="onFormSubmit()" [formGroup]="userForm" class="levelForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.FIRSTNAME"|translate}}</label>
+          <input class="form-control" formControlName="first_name" type="text" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.FIRSTNAME'|translate}}">
+          <label *ngIf="userForm.get('first_name').invalid  && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.LASTNAME"|translate}}</label>
+          <input class="form-control" formControlName="last_name" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.LASTNAME'|translate}}">
+          <label *ngIf="userForm.get('last_name').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.GROUP'|translate}}</label>
+          <select formControlName="groupId" class="form-control" (change)="changeType($event.target.value)">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.GROUP'|translate}}</option>
+            <option *ngFor="let oneGroup of groups" [selected]="" [value]="oneGroup.id">
+              {{oneGroup.name}}
+            </option>
+          </select>
+          <label *ngIf="userForm.get('groupId').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6" *ngIf="typeSelected && typeSelected.name=='user'">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.MOBILE"|translate}}</label>
+          <input class="form-control" formControlName="mobile" type="text" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.MOBILE'|translate}}">
+          <label *ngIf="userForm.get('mobile').invalid  && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6" *ngIf="typeSelected && typeSelected.name!='user'">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.EMAIL"|translate}}</label>
+          <input class="form-control" formControlName="email" type="email" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.EMAIL'|translate}}">
+          <label *ngIf="userForm.get('email').invalid  && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm col-sm-6" *ngIf="typeSelected && typeSelected.name!='user'">
+        <div class="form-group">
+          <label for="numberOfTimes">{{"GLOBAL.PASSWORD"|translate}}</label>
+          <input class="form-control" formControlName="password" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.PASSWORD'|translate}}">
+          <label *ngIf="userForm.get('password').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+      <div class="col-sm col-sm-6" *ngIf="typeSelected && typeSelected.name=='operator'">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.CENTER'|translate}}</label>
+          <select formControlName="centerId" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.CENTER'|translate}}</option>
+            <option *ngFor="let oneCenter of centers" [value]="oneCenter.id">
+              {{oneCenter[languageKey['name']]}}
+            </option>
+          </select>
+          <label *ngIf="userForm.get('centerId').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
+
+      <!--
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.SIZE'|translate}}</label>
+          <select formControlName="sizeId" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.SIZE'|translate}}</option>
+            <option *ngFor="let oneSize of sizes" [selected]="" [value]="oneSize.id">
+              {{oneSize[languageKey.name]|translate}}
+            </option>
+          </select>
+          <label *ngIf="userForm.get('size').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button (click)="back()" class="btn btn-danger" type="button">
+          {{"GLOBAL.BACK"|translate}}
+        </button>
+        <button *ngIf="!isUpdate" class="btn btn-success" type="submit">
+          {{"GLOBAL.ADD"|translate}}
+        </button>
+        <!-- <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i> -->
+        <button *ngIf="isUpdate" class=" btn btn-success" type="submit">
+          {{"GLOBAL.UPDATE"|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

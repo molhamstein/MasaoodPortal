@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicElementsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    alert("SSS");
+  }
 
   ngOnInit() {
   }

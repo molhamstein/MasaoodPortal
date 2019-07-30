@@ -16,11 +16,11 @@
                 <input type="email" (input)="isSubmitted=false;message=''" class="form-control" formControlName="email"
                   placeholder="{{'LOGIN.EMAIL' | translate}}">
                 <span class="md-line"></span>
-                <label *ngIf="logInForm.hasError('required','email') && isSubmitted"
+                <!-- <label *ngIf="logInForm.hasError('required','email') && isSubmitted"
                   class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
                 <label
                   *ngIf="logInForm.hasError('email', 'email') && !logInForm.hasError('required','email') && isSubmitted"
-                  class="text-danger errorLabel">{{'ERROR_FORM.ERROR_VALID_EMAIL'|translate}}</label>
+                  class="text-danger errorLabel">{{'ERROR_FORM.ERROR_VALID_EMAIL'|translate}}</label> -->
 
 
 

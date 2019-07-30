@@ -18,16 +18,38 @@
           <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='available')" class="badge badge-success">
             {{"GLOBAL.STATUSLIST."+ onerow[oneField.key]|translate}}</strong>
 
-          <strong
-            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='pending' || onerow[oneField.key]=='assigned')"
+            
+            <strong
+            *ngIf="oneField.type=='status' && ( onerow[oneField.key]=='assigned')"
+            class="badge badge-dark-warning">
+            {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
+
+            <strong
+            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='pending')"
             class="badge badge-warning">
             {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
+
+            <strong
+            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='packed')"
+            class="badge badge-danger">
+            {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
+
+
+          <strong
+            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='delivered' || onerow[oneField.key]=='delivering')"
+            class="badge badge-success">
+            {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
+
+
+          <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='canceled')" class="badge badge-inverse">
+            {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
+
 
           <i *ngIf="oneField.type=='gender'&& onerow[oneField.key]=='female'" style="color: #fc6180;font-size: 20px"
             class="fa fa-female" aria-hidden="true"></i>
           <i *ngIf="oneField.type=='gender'&& onerow[oneField.key]=='male'" style="color: #4680ff;font-size: 20px"
             class="fa fa-male" aria-hidden="true"></i>
-          <span *ngIf="oneField.type=='date'">{{formatDate(onerow[oneField.key])}}</span>
+          <span *ngIf="oneField.type=='date'">{{formatDate(onerow[oneField.key],oneField.viewDate||false)}}</span>
           <span *ngIf="oneField.type=='object'">{{getByStringKey(onerow,oneField.key)}}</span>
           <div *ngIf="oneField.type=='buttons'">
             <button style="margin: 0px 5px" *ngFor="let oneButton of oneField.buttons"

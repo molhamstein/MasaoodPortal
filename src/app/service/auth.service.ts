@@ -8,8 +8,9 @@ export class AuthService {
   token;
   userName
   lang
-  type
-
+  role
+  email
+  centerId
   constructor(private router: Router) {
     if (localStorage.getItem('token')) {
       this.isLogIn = true
@@ -23,8 +24,9 @@ export class AuthService {
     this.userId = localStorage.getItem("userId");
     this.token = localStorage.getItem("token");
     this.userName = localStorage.getItem("userName");
-    this.type = localStorage.getItem("type");
+    this.role = localStorage.getItem("role");
     this.lang = localStorage.getItem("lang");
+    this.centerId = localStorage.getItem("centerId");
   }
 
   isLogin() {
@@ -39,12 +41,18 @@ export class AuthService {
     return this.token;
   }
 
+  getCenterId() {
+    return this.centerId
+  }
   getuserName() {
     return this.userName;
   }
+  getEmail() {
+    return this.email
+  }
 
-  getType() {
-    return this.type;
+  getRole() {
+    return this.role;
   }
 
   getLang() {
@@ -69,9 +77,13 @@ export class AuthService {
 
   logInLocalStorage(data) {
     // localStorage.setItem('userId', data.userId);
-    localStorage.setItem('token',"Bearer "+  data.token);
-    // localStorage.setItem('userName', data.user.username);
-    // localStorage.setItem('type', data.user.type);
+    localStorage.setItem('token', "Bearer " + data.token);
+    localStorage.setItem('userName', data.user.first_name + " " + data.user.last_name);
+    localStorage.setItem('email', data.user.email);
+    localStorage.setItem('role', data.user.groups[0].name);
+    if (data.user.center)
+      localStorage.setItem('centerId', data.user.center.id);
+
     // this.router.navigateByUrl('/').then(() => this.router.navigateByUrl('/'));
   }
 

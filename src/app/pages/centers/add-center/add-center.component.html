@@ -4,16 +4,16 @@
       <div class="col-sm col-sm-6">
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.NAME_AR"|translate}}</label>
-          <input class="form-control" formControlName="nameAr" (input)="isSubmitted=false;message=''"
+          <input class="form-control" formControlName="nameAr" type="text" (input)="isSubmitted=false;message=''"
             placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.NAME_AR'|translate}}">
-          <label *ngIf="centerForm.hasError('required','nameAr') && isSubmitted"
+          <label *ngIf="centerForm.get('nameAr').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.NAME_EN"|translate}}</label>
-          <input class="form-control" formControlName="nameEn" (input)="isSubmitted=false;message=''"
+          <input class="form-control" formControlName="nameEn" type="text" (input)="isSubmitted=false;message=''"
             placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.NAME_EN'|translate}}">
-          <label *ngIf="centerForm.hasError('required','nameEn') && isSubmitted"
+          <label *ngIf="centerForm. get('nameEn').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
         <div class="form-group">
@@ -21,7 +21,7 @@
           <ng-select [ngClass]="'ng-select'" [options]="statesOption" formControlName="statesId" [multiple]="true">
           </ng-select>
 
-          <label *ngIf="centerForm.hasError('required','statesId') && isSubmitted"
+          <label *ngIf="centerForm.get('statesId').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
       </div>
@@ -36,14 +36,14 @@
 
     <div class="row">
       <div class="col-sm submit-col">
-        <button [disabled]="submitted" (click)="back()" class="btn btn-danger" type="button">
+        <button  (click)="back()" class="btn btn-danger" type="button">
           {{"GLOBAL.BACK"|translate}}
         </button>
-        <button *ngIf="!isUpdate" [disabled]="submitted" class="btn btn-success" type="submit">
+        <button *ngIf="!isUpdate"  class="btn btn-success" type="submit">
           {{"GLOBAL.ADD"|translate}}
         </button>
         <!-- <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i> -->
-        <button *ngIf="isUpdate" [disabled]="submitted" class=" btn btn-success" type="submit">
+        <button *ngIf="isUpdate"  class=" btn btn-success" type="submit">
           {{"GLOBAL.UPDATE"|translate}}
         </button>
       </div>

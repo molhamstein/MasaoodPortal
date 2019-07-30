@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { AppDirectionService } from './app-direction.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
@@ -6,11 +7,93 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class GlobalService {
+  roles = {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authSer: AuthService, private translateSer: TranslateService, public directionSer: AppDirectionService) {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private translateSer: TranslateService, public directionSer: AppDirectionService) {
+    this.roles = {
+      "list-abstract-product": {
+        "operator": false,
+        "admin": true,
+      },
+      "operator": false,
+      "add-abstract-product": {
+        "operator": false,
+        "admin": true,
+      },
+      "edit-abstract-product": {
+        "operator": false,
+        "admin": true,
+      },
+      "show-abstract-product": {
+        "operator": false,
+        "admin": true,
+      },
+
+      "add-product": {
+        "operator": false,
+        "admin": true,
+      },
+      "edit-product": {
+        "operator": false,
+        "admin": true,
+      },
+
+      "add-center-product": {
+        "operator": false,
+        "admin": true,
+      },
+      "edit-center-product": {
+        "operator": false,
+        "admin": true,
+      },
+
+      "list-order": {
+        "operator": true,
+        "admin": true,
+      },
+
+      "list-user": {
+        "operator": false,
+        "admin": true,
+      },
+      "add-user": {
+        "operator": false,
+        "admin": true,
+      },
+
+      "list-center": {
+        "operator": false,
+        "admin": true,
+      },
+      "add-center": {
+        "operator": false,
+        "admin": true,
+      },
+      "show-center": {
+        "operator": false,
+        "admin": true,
+      },
+      "edit-center": {
+        "operator": false,
+        "admin": true,
+      },
+
+
+    }
+
   }
 
-  getByStringKey(object,stringKey){
+  isAllowedPage(page) {
+    // return true
+    var roleUser = this.authSer.getRole();
+    if (roleUser != undefined)
+      if (this.roles[page][roleUser] == false || this.roles[page][roleUser] == null)
+        return false
+      else
+        return true
+  }
+
+  getByStringKey(object, stringKey) {
     return _.at(object, stringKey);
 
   }

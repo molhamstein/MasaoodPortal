@@ -61,6 +61,8 @@ export class DialogService {
   changeOrderStatus(order, callback: Function) {
     var modalRef = this.modalService.open(ChangeOrderStatusComponent)
     modalRef.result.then((data) => {
+      if (data)
+        callback()
     }, (reason) => {
     });
     modalRef.componentInstance.order = order;

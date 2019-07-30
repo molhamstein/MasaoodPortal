@@ -6012,6 +6012,11 @@ a[data-lightbox="example-set"] .img-fluid {
 
 .badge-warning {
   background-color: #FFB64D;
+  color: white;
+}
+
+.badge-dark-warning {
+  background-color: rgb(255, 160, 27);
 }
 
 .badge-default {
@@ -6029,6 +6034,11 @@ a[data-lightbox="example-set"] .img-fluid {
 .badge-inverse {
   background-color: #303548;
 }
+
+.badge-main {
+  background-color: #64b1c9;
+}
+
 
 .badge-info {
   background-color: #62d1f3;
@@ -12356,6 +12366,15 @@ body.menu-bottom #collapse-menu {
   cursor: pointer;
   transition: all ease-in 0.3s;
 }
+
+.btn-dark-warning {
+  background-color: rgb(255, 160, 27);
+  border-color: rgb(255, 160, 27);
+  color: #fff;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
 
 .btn-danger:hover {
   background-color: #fd93a8;
@@ -24538,11 +24557,85 @@ body.dark #styleSelector .form-control {
 }
 
 
-.modal-content{
-  border:none !important;
+.modal-content {
+  border: none !important;
 }
 
 .logout-btn:hover,
 .clickable-li {
   cursor: pointer;
+}
+
+.loader {
+  height: 4px;
+  width: calc(100% - 270px);
+  position: absolute;
+  overflow: hidden;
+  background-color: #6ab9d185;
+  right: 0;
+  bottom: 0;
+}
+
+.loader:before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #002f43;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    left: -200px;
+    width: 30%;
+  }
+
+  50% {
+    width: 30%;
+  }
+
+  70% {
+    width: 70%;
+  }
+
+  80% {
+    left: 50%;
+  }
+
+  95% {
+    left: 120%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+ng-select.ng-select>div>div.single {
+  border: 1px solid #cccccc;
+  padding: 6px 10px 6px 10px !important;
+  border-radius: 2px;
+  background-color: white;
+  height: 35px;
+}
+
+ng-select.ng-select>div>div.single>div.toggle {
+  color: black;
+  padding-right: 8px;
+  line-height: 22px;
+}
+
+ng-select>div>div.single>div.value {
+  color: #495057;
+  line-height: 23px !important;
+}
+
+
+ng-select.ng-select>div>div.single>div.placeholder {
+  color: #757575;
+  line-height: 23px !important;
+
 }
