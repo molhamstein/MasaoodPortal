@@ -56,6 +56,10 @@ export class GlobalService {
         "operator": false,
         "admin": true,
       },
+      "list-staf-user": {
+        "operator": false,
+        "admin": true,
+      },
       "add-user": {
         "operator": false,
         "admin": true,

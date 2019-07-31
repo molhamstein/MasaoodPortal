@@ -36,7 +36,7 @@ export class loginComponent implements OnInit {
         return;
       }
       self.mainSer.authServ.logIn(data);
-      self.mainSer.globalServ.goTo('list-abstract-product')
+      self.mainSer.globalServ.goTo('list-order')
     })
   }
 }

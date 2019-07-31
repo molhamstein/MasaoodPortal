@@ -4,10 +4,34 @@
     "EMAIL": "Your Email Address",
     "PASSWORD": "Password"
   },
+  "TITLESPAGE": {
+    "LOGIN": "Login",
+    "ADDABSTRACTPRODUCT": "Add Base Product",
+    "EDITABSTRACTPRODUCT": "Edit Base Product",
+    "SHOWABSTRACTPRODUCT": "Show Base Product",
+    "LISTABSTRACTPRODUCT": "All Base Prdouct",
+
+    "ADDPRODUCT": "Add Product",
+    "EDITPRODUCT": "Edit Product",
+
+    "LISTCENTER": "All Center",
+    "SHOWCENTER": "Show Center",
+    "ADDCENTER": "Add Center",
+    "EDITCENTER": "Edit Center",
+
+    "LISTUSER": "All User",
+    "ADDUSER": "Add User",
+
+
+    "ADDCENTERPRODUCT": "Add Center Product",
+    "EDITCENTERPRODUCT": "Edit Center Product",
+    "LISTORDER": "All Order"
+  },
   "MAINMENU": {
     "ABSTRACTPRODUCT": "Base Product",
     "ORDER": "Order",
     "USER": "User",
+    "STAFUSER": "Staf User",
     "CENTER": "Center"
   },
   "ERROR_FORM": {

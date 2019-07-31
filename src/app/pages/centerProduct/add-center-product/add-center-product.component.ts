@@ -57,7 +57,13 @@ export class AddCenterProductComponent implements OnInit {
 
   }
 
-  getProduct(value) {
+  getProduct(event) {
+    if (event.code == 'ArrowRight' || event.code == 'ArrowLeft' || event.code == 'ArrowUp' || event.code == 'ArrowDown' || event.code == 'Enter' || event.code == 'Tab') {
+      return
+    }
+    let value = event.path[0].value
+    // alert(value)
+    console.log(value)
     let self = this
     this.productOption = []
     this.product = []

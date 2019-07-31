@@ -4,12 +4,11 @@ import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-list-user',
-  templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.css']
+  selector: 'app-list-staf-user',
+  templateUrl: './list-staf-user.component.html',
+  styleUrls: ['./list-staf-user.component.css']
 })
-export class ListUserComponent implements OnInit {
-
+export class ListStafUserComponent implements OnInit {
   public limit: number = 10
   public offset: number = 0
   public count: number = 0
@@ -17,11 +16,12 @@ export class ListUserComponent implements OnInit {
   public languageKey = this.mainSer.globalServ.getLanguageKey()
 
   fields = [
-    { "key": "first_name", "label": "GLOBAL.FIRST_NAME", "type": "string" },
-    { "key": "mobile", "label": "GLOBAL.MOBILE", "type": "string" },
+    { "key": "email", "label": "GLOBAL.EMAIL", "type": "string" },
+    { "key": "groups[0].name", "label": "GLOBAL.GROUP", "type": "object" },
     { "key": "date_joined", "label": "GLOBAL.DATEJOINED", "type": "date" },
   ]
   constructor(private userSer: UserService, private mainSer: MainService) { }
+
 
   ngOnInit() {
     this.getData()
@@ -35,7 +35,7 @@ export class ListUserComponent implements OnInit {
   }
   getData() {
     var self = this;
-    self.userSer.getPaginationObject(self.limit, self.offset, function (err: appError, data, count) {
+    self.userSer.getPaginationObjectStaf(self.limit, self.offset, function (err: appError, data, count) {
       if (err)
         return err.returnMessage()
       self.arrayUsers = data;
@@ -53,8 +53,9 @@ export class ListUserComponent implements OnInit {
   }
 
   addUser() {
-    this.mainSer.transfereSer.setData({ "isFromUser": true })
+    this.mainSer.transfereSer.setData({ "isFromUser": false })
     this.mainSer.globalServ.goTo("add-user")
   }
+
 
 }

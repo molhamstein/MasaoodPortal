@@ -1,3 +1,4 @@
+import { ListStafUserComponent } from './pages/users/list-staf-user/list-staf-user.component';
 import { AddCenterProductComponent } from './pages/centerProduct/add-center-product/add-center-product.component';
 import { AddUserComponent } from './pages/users/add-user/add-user.component';
 import { AddCenterComponent } from './pages/centers/add-center/add-center.component';
@@ -20,87 +21,149 @@ export const AppRoutes: Routes = [
   {
     path: 'login',
     component: loginComponent,
+    data: {
+      "pageTitle": "LOGIN"
+    }
   },
   {
     path: '',
     component: AdminComponent,
     children: [
       {
+        path: 'list-abstract-product',
+        component: ListAbstractProductComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "LISTABSTRACTPRODUCT"
+        }
+      },
+      {
         path: 'add-abstract-product',
         component: AddAbtractProductsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "ADDABSTRACTPRODUCT"
+        }
       },
       {
         path: 'edit-abstract-product/:id',
         component: AddAbtractProductsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "EDITABSTRACTPRODUCT"
+        }
       },
       {
         path: 'show-abstract-product/:id',
         component: ShowAbstractProductComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "SHOWABSTRACTPRODUCT"
+        }
       },
       {
         path: 'add-product/:abstractProductId',
         component: AddProductComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "ADDPRODUCT"
+        }
       },
       {
         path: 'edit-product/:abstractProductId/:id',
         component: AddProductComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "EDITPRODUCT"
+        }
       },
-      {
-        path: 'add-center-product/:centerId',
-        component: AddCenterProductComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'edit-center-product/:centerId/:id',
-        component: AddCenterProductComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'list-abstract-product',
-        component: ListAbstractProductComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'list-order',
-        component: ListOrderComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'list-user',
-        component: ListUserComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'add-user',
-        component: AddUserComponent,
-        canActivate: [AuthGuardService]
-      },
+
       {
         path: 'list-center',
         component: ListCenterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "LISTCENTER"
+        }
       },
       {
         path: 'show-center/:id',
         component: ShowCenterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "SHOWCENTER"
+        }
       },
       {
         path: 'add-center',
         component: AddCenterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "ADDCENTER"
+        }
       },
 
       {
         path: 'edit-center/:id',
         component: AddCenterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "EDITCENTER"
+        }
       },
+
+      {
+        path: 'list-user',
+        component: ListUserComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "LISTUSER"
+        }
+
+      },
+      {
+        path: 'list-staf-user',
+        component: ListStafUserComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "LISTSTAFUSER"
+        }
+
+      },
+      {
+        path: 'add-user',
+        component: AddUserComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "ADDUSER"
+        }
+      },
+      {
+        path: 'add-center-product/:centerId',
+        component: AddCenterProductComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "ADDCENTERPRODUCT"
+        }
+      },
+      {
+        path: 'edit-center-product/:centerId/:id',
+        component: AddCenterProductComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "EDITCENTERPRODUCT"
+        }
+      },
+      {
+        path: 'list-order',
+        component: ListOrderComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "LISTORDER"
+        }
+      },
+
+
 
       // {
       //   path: 'dashboard',

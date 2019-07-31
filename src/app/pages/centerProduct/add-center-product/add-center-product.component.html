@@ -13,7 +13,7 @@
       <div class="col-sm col-sm-6" *ngIf="!isUpdate">
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.PRODUCT"|translate}}</label>
-          <ng-select (change)="getProduct($event.target.value)"
+          <ng-select (keyup)="getProduct($event)"
             [placeholder]="'GLOBAL.PRODUCT'|translate" [ngClass]="'ng-select'"
             [options]="productOption" formControlName="productId">
           </ng-select>

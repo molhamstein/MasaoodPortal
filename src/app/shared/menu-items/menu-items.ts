@@ -46,21 +46,15 @@ const MENUITEMS = [
   {
     label: '',
     main: [{
-      state: 'list-abstract-product',
-      name: 'MAINMENU.ABSTRACTPRODUCT',
-      type: 'link',
-      icon: 'ti-package '
-    }, {
       state: 'list-order',
       name: 'MAINMENU.ORDER',
       type: 'link',
       icon: 'ti-shopping-cart '
-    },
-    {
-      state: 'list-user',
-      name: 'MAINMENU.USER',
+    }, {
+      state: 'list-abstract-product',
+      name: 'MAINMENU.ABSTRACTPRODUCT',
       type: 'link',
-      icon: 'ti-user '
+      icon: 'ti-package '
     },
     {
       state: 'list-center',
@@ -68,6 +62,18 @@ const MENUITEMS = [
       type: 'link',
       icon: 'ti-map-alt '
     },
+    {
+      state: 'list-user',
+      name: 'MAINMENU.USER',
+      type: 'link',
+      icon: 'ti-comments-smiley '
+    },
+    {
+      state: 'list-staf-user',
+      name: 'MAINMENU.STAFUSER',
+      type: 'link',
+      icon: 'ti-user '
+    }
     ]
   },
   // {

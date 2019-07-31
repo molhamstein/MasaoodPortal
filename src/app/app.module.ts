@@ -1,3 +1,4 @@
+import { TransfereService } from './service/transfere.service';
 import { CenterProductService } from './pages/centerProduct/center-product.service';
 import { AgmCoreModule } from '@agm/core';
 import { SelectModule } from 'ng-select';
@@ -69,6 +70,7 @@ import { GroupService } from './pages/users/group.service';
 import { AddUserComponent } from './pages/users/add-user/add-user.component';
 import { ShowCenterComponent } from './pages/centers/show-center/show-center.component';
 import { AddCenterProductComponent } from './pages/centerProduct/add-center-product/add-center-product.component';
+import { ListStafUserComponent } from './pages/users/list-staf-user/list-staf-user.component';
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/languages/', '.json');
@@ -107,12 +109,12 @@ export function HttpLoaderFactory(http: Http) {
 
 
     // // dialog
-    ConfirmComponent, SuccessComponent, FailedComponent, OrderInfoComponent, ChangeOrderStatusComponent, ListCenterComponent, AddCenterComponent, AddUserComponent, ShowCenterComponent,  AddCenterProductComponent,
+    ConfirmComponent, SuccessComponent, FailedComponent, OrderInfoComponent, ChangeOrderStatusComponent, ListCenterComponent, AddCenterComponent, AddUserComponent, ShowCenterComponent, AddCenterProductComponent, ListStafUserComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes),
+    RouterModule.forRoot(AppRoutes, { enableTracing: false, useHash: true }),
     ClickOutsideModule,
     AngularFontAwesomeModule,
     SharedModule,
@@ -140,7 +142,7 @@ export function HttpLoaderFactory(http: Http) {
   providers: [
     HttpClient,
     // main services
-    AppDirectionService, AuthGuardService, MainService, GlobalService, AuthService, LoaderService, ApiService, DialogService,
+    AppDirectionService, AuthGuardService, MainService, GlobalService, AuthService, LoaderService, ApiService, DialogService,TransfereService,
     // pages services
     CenterService, LoginService, StatesService, UploadImgService, GradeService, AbstractProductService, ProductService, SizeService, OrderService, UserService, GroupService, CenterProductService,
     // others

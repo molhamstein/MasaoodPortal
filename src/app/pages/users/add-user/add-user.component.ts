@@ -23,6 +23,7 @@ export class AddUserComponent implements OnInit {
   public isUpdate: boolean = false;
   public id: number;
   public typeSelected;
+  public tranferedata: any;
 
 
   userForm = new FormGroup({
@@ -63,6 +64,8 @@ export class AddUserComponent implements OnInit {
   }
   constructor(private mainSer: MainService, private groupSer: GroupService, private centerSer: CenterService, private routeSer: ActivatedRoute, private userSer: UserService, private dialogSer: DialogService) {
     var self = this;
+    self.tranferedata = self.mainSer.transfereSer.getData()
+    self.mainSer.transfereSer.clearData()
     this.routeSer.params.subscribe(params => {
       if (params['id']) {
         this.isUpdate = true
@@ -137,6 +140,10 @@ export class AddUserComponent implements OnInit {
   }
 
   back() {
-    this.mainSer.globalServ.goTo("list-user")
+    if (this.tranferedata && this.tranferedata['isFromUser'])
+      this.mainSer.globalServ.goTo("list-user")
+    else
+      this.mainSer.globalServ.goTo("list-staf-user")
+
   }
 }

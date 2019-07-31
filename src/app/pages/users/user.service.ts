@@ -26,6 +26,16 @@ export class UserService {
       })
   }
 
+  getPaginationObjectStaf(limit, offset, callback) {
+    this.mainSer.APIServ.get({ "index": "users", "filter": { "limit": limit, "offset": offset, "is_staff__in": false }, "ordering": "-createdAt" })
+      .subscribe((data: any) => {
+        callback(null, data.results, data.count)
+      }, error => {
+        callback(error, null)
+      })
+  }
+
+
   createUser(data, callback) {
     data.groupsId = [parseInt(data.groupId)];
     // imagesArray.forEach(element => {

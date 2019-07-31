@@ -83,6 +83,15 @@ export class ListOrderComponent implements OnInit {
       { "label": "assigned", "value": "assigned", "type": "warning" },
       { "label": "canceled", "value": "canceled", "type": "inverse" },
       ]
+    } else {
+      this.statusFilter = [{ "label": "all", "value": null, "type": "default" },
+      { "label": "delivered", "value": "delivered", "type": "success" },
+      { "label": "indelivery", "value": "indelivery", "type": "success" },
+      { "label": "packed", "value": "packed", "type": "danger" },
+      { "label": "assigned", "value": "assigned", "type": "warning" },
+      { "label": "pending", "value": "pending", "type": "dark-warning" },
+      { "label": "canceled", "value": "canceled", "type": "inverse" },
+      ]
     }
     this.getData()
   }
