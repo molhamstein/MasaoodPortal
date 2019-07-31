@@ -13,5 +13,4 @@ export class AppComponent {
   constructor(mainSer: MainService, private translate: TranslateService, private route: ActivatedRoute) {
     translate.setDefaultLang('en');
   }
-
 }

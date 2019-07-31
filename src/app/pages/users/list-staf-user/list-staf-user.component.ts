@@ -20,6 +20,9 @@ export class ListStafUserComponent implements OnInit {
     { "key": "groups[0].name", "label": "GLOBAL.GROUP", "type": "object" },
     { "key": "date_joined", "label": "GLOBAL.DATEJOINED", "type": "date" },
   ]
+
+  filter = { "groups__name__in": "admin,operator", "email__icontains": "" }
+
   constructor(private userSer: UserService, private mainSer: MainService) { }
 
 
@@ -28,6 +31,12 @@ export class ListStafUserComponent implements OnInit {
   }
 
 
+  getFilter() {
+    this.offset = 0
+    this.count = 0
+    this.getData()
+  }
+
   changePages(page) {
     console.log(page);
     this.offset = (page - 1) * this.limit;
@@ -35,7 +44,7 @@ export class ListStafUserComponent implements OnInit {
   }
   getData() {
     var self = this;
-    self.userSer.getPaginationObjectStaf(self.limit, self.offset, function (err: appError, data, count) {
+    self.userSer.getPaginationObjectStaf(self.limit, self.offset, self.filter, function (err: appError, data, count) {
       if (err)
         return err.returnMessage()
       self.arrayUsers = data;

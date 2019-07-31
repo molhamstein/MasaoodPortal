@@ -21,12 +21,19 @@ export class ListUserComponent implements OnInit {
     { "key": "mobile", "label": "GLOBAL.MOBILE", "type": "string" },
     { "key": "date_joined", "label": "GLOBAL.DATEJOINED", "type": "date" },
   ]
+
+  filter = { "groups__name__in": "user", "mobile__icontains": "" }
   constructor(private userSer: UserService, private mainSer: MainService) { }
 
   ngOnInit() {
     this.getData()
   }
 
+  getFilter() {
+    this.offset = 0
+    this.count = 0
+    this.getData()
+  }
 
   changePages(page) {
     console.log(page);
@@ -35,7 +42,7 @@ export class ListUserComponent implements OnInit {
   }
   getData() {
     var self = this;
-    self.userSer.getPaginationObject(self.limit, self.offset, function (err: appError, data, count) {
+    self.userSer.getPaginationObject(self.limit, self.offset, self.filter, function (err: appError, data, count) {
       if (err)
         return err.returnMessage()
       self.arrayUsers = data;

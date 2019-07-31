@@ -32,7 +32,8 @@ export class loginComponent implements OnInit {
 
     this.loginSer.login(this.logInForm.value, function (err: appError, data) {
       if (err) {
-        self.message = err.returnMessage();
+        self.message = "ERROR_FORM.LOGIN_FIELD";
+        // self.message = err.returnMessage();
         return;
       }
       self.mainSer.authServ.logIn(data);

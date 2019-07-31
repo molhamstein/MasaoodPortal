@@ -6,6 +6,14 @@
     </button>
   </div>
 
+  <div class="row">
+    <div class="form-group">
+      <input class="form-control" (change)="getFilter()" [(ngModel)]="filter.email__icontains" type="text"
+        placeholder="{{'GLOBAL.SEARCHBY'|translate}} {{'GLOBAL.EMAIL'|translate}}">
+    </div>
+
+  </div>
+
   <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayUsers"
     (changePage)="changePages($event)" (actionOnRow)="action($event)">
   </app-custom-table>

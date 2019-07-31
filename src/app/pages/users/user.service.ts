@@ -17,8 +17,15 @@ export class UserService {
         callback(error, null)
       })
   }
-  getPaginationObject(limit, offset, callback) {
-    this.mainSer.APIServ.get({ "index": "users", "filter": { "limit": limit, "offset": offset, "is_staff__in": false }, "ordering": "-createdAt" })
+  getPaginationObject(limit, offset, myFilter, callback) {
+    var filter = { "limit": limit, "offset": offset }
+    if (myFilter != null) {
+      for (var key in myFilter) {
+        if (myFilter[key] != null)
+          filter[key] = myFilter[key]
+      };
+    }
+    this.mainSer.APIServ.get({ "index": "users", "filter": filter, "ordering": "-date_joined" })
       .subscribe((data: any) => {
         callback(null, data.results, data.count)
       }, error => {
@@ -26,8 +33,16 @@ export class UserService {
       })
   }
 
-  getPaginationObjectStaf(limit, offset, callback) {
-    this.mainSer.APIServ.get({ "index": "users", "filter": { "limit": limit, "offset": offset, "is_staff__in": false }, "ordering": "-createdAt" })
+  getPaginationObjectStaf(limit, offset, myFilter, callback) {
+    var filter = { "limit": limit, "offset": offset }
+    if (myFilter != null) {
+      for (var key in myFilter) {
+        if (myFilter[key] != null)
+          filter[key] = myFilter[key]
+      };
+    }
+
+    this.mainSer.APIServ.get({ "index": "users", "filter": filter, "ordering": "-date_joined" })
       .subscribe((data: any) => {
         callback(null, data.results, data.count)
       }, error => {

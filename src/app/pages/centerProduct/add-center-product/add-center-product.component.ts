@@ -62,20 +62,18 @@ export class AddCenterProductComponent implements OnInit {
       return
     }
     let value = event.path[0].value
-    // alert(value)
-    console.log(value)
     let self = this
-    this.productOption = []
-    this.product = []
     this.abstractSer.getObjectByName(value, function (err: appError, data) {
       if (err)
         return
+      self.productOption = []
+      self.product = []
       data.forEach(element => {
 
         element.products.forEach(elementProd => {
           self.product.push(elementProd)
         });
-        self.productOption = self.product.map(option => ({ value: option.id.toString(), label: option.abstractProduct[self.languageKey.name] + " " + option.size[self.languageKey.name] }));
+        self.productOption = self.product.map(option => ({ value: option.id.toString(), label: option.abstractProduct[self.languageKey.name] + " " + option.abstractProduct.gender + " " + option.size[self.languageKey.name] }));
 
       });
     })

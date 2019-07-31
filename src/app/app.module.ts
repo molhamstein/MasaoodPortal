@@ -17,7 +17,7 @@ import { UploadImgComponent } from './shared/upload-img/upload-img.component';
 import { TableComponent } from './shared/table/table.component';
 import { LoginService } from './pages/login/login.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from './pages/ui-elements/forms/forms.module';
+import { FormsModule } from '@angular/forms';
 import { AuthService } from './service/auth.service';
 import { GlobalService } from './service/global.service';
 import { MainService } from './service/main.service';
@@ -121,8 +121,8 @@ export function HttpLoaderFactory(http: Http) {
     HttpModule,
     HttpClientModule,
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     SelectModule,
     NgbModule.forRoot(),
     PaginationModule.forRoot(),
