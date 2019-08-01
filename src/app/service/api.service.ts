@@ -12,6 +12,7 @@ export class ApiService {
   constructor(public http: HttpClient, private authSer: AuthService, private loaderSer: LoaderService) {
   }
   readonly baseUrl = "http://174.138.28.26:3434/api/v1/"
+  // readonly baseUrl = "http://104.217.253.15:3434/api/v1/"
   constURL = {
     "login": "password-auth/login/",
     "uploadImg": "medias/",

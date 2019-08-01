@@ -20,6 +20,7 @@
     "EDITCENTER": "Edit Center",
 
     "LISTUSER": "All User",
+    "LISTSTAFUSER": "All Staf User",
     "ADDUSER": "Add User",
 
 
@@ -65,7 +66,9 @@
     }
   },
   "ERROR_CODE": {
-    "500": "Some thing is error"
+    "500": "Some thing is error",
+    "401": "Email is already used",
+    "402": "Email is already used"
   },
   "GLOBAL": {
     "ADD": "Add",

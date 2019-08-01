@@ -102,7 +102,8 @@ export class AddUserComponent implements OnInit {
     let body = this.userForm.value;
     this.userSer.createUser(body, function (err: appError, data) {
       if (err) {
-        err.returnMessage();
+        self.dialogSer.errorMessage(401, function () { })
+        // err.returnMessage();
         return;
       }
       self.dialogSer.successMessage(false, function () {

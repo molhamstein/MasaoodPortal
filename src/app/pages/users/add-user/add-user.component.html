@@ -1,6 +1,8 @@
 <form (ngSubmit)="onFormSubmit()" [formGroup]="userForm" class="levelForm">
   <div class="container">
     <div class="row">
+      <!-- <div class="error">Error message</div> -->
+
       <div class="col-sm col-sm-6">
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.FIRSTNAME"|translate}}</label>
@@ -47,7 +49,7 @@
       <div class="col-sm col-sm-6" *ngIf="typeSelected && typeSelected.name!='user'">
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.EMAIL"|translate}}</label>
-          <input class="form-control" formControlName="email" type="email" (input)="isSubmitted=false;message=''"
+          <input class="form-control" formControlName="email" name="newEmail" type="email" (input)="isSubmitted=false;message=''"
             placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.EMAIL'|translate}}">
           <label *ngIf="userForm.get('email').invalid  && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
@@ -59,8 +61,8 @@
       <div class="col-sm col-sm-6" *ngIf="typeSelected && typeSelected.name!='user'">
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.PASSWORD"|translate}}</label>
-          <input class="form-control" formControlName="password" (input)="isSubmitted=false;message=''"
-            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.PASSWORD'|translate}}">
+          <input class="form-control" formControlName="password" name="newPassword" (input)="isSubmitted=false;message=''"
+            placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.PASSWORD'|translate}}" type="password">
           <label *ngIf="userForm.get('password').invalid && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
         </div>
