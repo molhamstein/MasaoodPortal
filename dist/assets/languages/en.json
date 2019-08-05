@@ -68,7 +68,8 @@
   "ERROR_CODE": {
     "500": "Some thing is error",
     "401": "Email is already used",
-    "402": "Email is already used"
+    "402": "Email is already used",
+    "454": "Center does not have a product"
   },
   "GLOBAL": {
     "ADD": "Add",
@@ -125,7 +126,7 @@
       "unavailable": "Unavailable",
       "pending": "Pending",
       "packed": "Packed",
-      "indelivery": "In Delivery",
+      "delivering": "In Delivery",
       "delivered": "Delivered",
       "assigned": "Assigned",
       "canceled": "Canceled"

@@ -1,3 +1,4 @@
+import { FailedComponent } from './../failed/failed.component';
 import { CenterService } from './../../pages/centers/center.service';
 import { OrderService } from './../../pages/order/order.service';
 import { Order } from './../../models/order.model';
@@ -10,6 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DialogService } from '../../service/dialog.service';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class ChangeOrderStatusComponent implements OnInit {
 
   public languageKey = this.mainSer.globalServ.getLanguageKey()
   public message: string = "";
-  constructor(public activeModal: NgbActiveModal, private orderSer: OrderService, private centerSer: CenterService, private mainSer: MainService) {
+  constructor(public activeModal: NgbActiveModal, private orderSer: OrderService, private modalService: NgbModal, private centerSer: CenterService, private mainSer: MainService) {
   }
 
   public center: Center[] = [];
@@ -49,18 +51,25 @@ export class ChangeOrderStatusComponent implements OnInit {
     else if (this.status == "delivered") {
       type = "deliverOrders"
     }
-    else if (this.status == "indelivery") {
+    else if (this.status == "delivering") {
       type = "deliveringOrders"
     }
     else if (this.status == "packed") {
       type = "packOrders"
     }
+    let selt = this;
+    this.orderSer.changeOrder(type, this.order.id, data, function (err: appError, data) {
+      if (err && err.status == 454) {
+        var modalRef = selt.modalService.open(FailedComponent)
+        modalRef.result.then((data) => {
+          console.log(data)
+        }, (reason) => {
+        });
+        modalRef.componentInstance.data = { "errorCode": 454 };
+      }
 
-
-
-    this.orderSer.changeOrder(type, this.order.id, data, function (err, data) {
-      self.activeModal.close(true)
-
+      else
+        self.activeModal.close(true)
     })
 
   }
@@ -86,7 +95,7 @@ export class ChangeOrderStatusComponent implements OnInit {
         { "label": "pending", "value": "pending" },
         { "label": "assigned", "value": "assigned" },
         { "label": "packed", "value": "packed" },
-        { "label": "indelivery", "value": "indelivery" },
+        { "label": "delivering", "value": "delivering" },
         { "label": "delivered", "value": "delivered" },
         { "label": "canceled", "value": "canceled" }
       ]
@@ -94,7 +103,7 @@ export class ChangeOrderStatusComponent implements OnInit {
       this.statusList = [
         { "label": "assigned", "value": "assigned" },
         { "label": "packed", "value": "packed" },
-        { "label": "indelivery", "value": "indelivery" },
+        { "label": "delivering", "value": "delivering" },
         { "label": "delivered", "value": "delivered" },
         { "label": "canceled", "value": "canceled" }
       ]

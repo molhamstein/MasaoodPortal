@@ -78,7 +78,7 @@ export class ListOrderComponent implements OnInit {
       this.filter["center__in"] = this.mainSer.authServ.getCenterId()
       this.statusFilter = [{ "label": "all", "value": null, "type": "default" },
       { "label": "delivered", "value": "delivered", "type": "success" },
-      { "label": "indelivery", "value": "indelivery", "type": "success" },
+      { "label": "delivering", "value": "delivering", "type": "success" },
       { "label": "packed", "value": "packed", "type": "danger" },
       { "label": "assigned", "value": "assigned", "type": "warning" },
       { "label": "canceled", "value": "canceled", "type": "inverse" },
@@ -86,7 +86,7 @@ export class ListOrderComponent implements OnInit {
     } else {
       this.statusFilter = [{ "label": "all", "value": null, "type": "default" },
       { "label": "delivered", "value": "delivered", "type": "success" },
-      { "label": "indelivery", "value": "indelivery", "type": "success" },
+      { "label": "delivering", "value": "delivering", "type": "success" },
       { "label": "packed", "value": "packed", "type": "danger" },
       { "label": "assigned", "value": "assigned", "type": "warning" },
       { "label": "pending", "value": "pending", "type": "dark-warning" },
