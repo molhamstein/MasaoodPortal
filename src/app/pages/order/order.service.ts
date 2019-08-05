@@ -79,6 +79,24 @@ export class OrderService {
       })
   }
 
+  archiveOrder(id, callback) {
+    this.mainSer.APIServ.put({ "index": "archiveOrders", "variables": { "id": id } }, {})
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
+  deleteOrder(id, callback) {
+    this.mainSer.APIServ.delete({ "index": "oneOrders", "variables": { "id": id } })
+      .subscribe((data: any) => {
+        callback(null, {})
+      }, error => {
+        callback(error, null)
+      })
+  }
+
 
 
 }

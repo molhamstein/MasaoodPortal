@@ -13,7 +13,7 @@ export class AbstractProduct {
   images: Image[];
   createdAt: Date;
   rangePrice: string;
-
+  status: string;
   constructor(grade) {
     this.id = grade.id || null;
     this.nameEn = grade.nameEn || "";
@@ -27,6 +27,7 @@ export class AbstractProduct {
     this.imagesId = grade.imagesId || []
     this.createdAt = grade.createdAt || new Date()
     this.rangePrice = this.calcRangeProduct(grade)
+    this.status = grade.status || 'available'
   }
 
   static arrayConstructor(data: any[]): AbstractProduct[] {

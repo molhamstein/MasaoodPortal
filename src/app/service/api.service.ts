@@ -25,6 +25,7 @@ export class ApiService {
     "oneProducts": "products/{{id}}/",
     "oneCenters": "centers/{{id}}/",
     "orders": "orders/",
+    "oneOrders": "orders/{{id}}",
     "users": "users/",
     "groups": "groups/",
     "centers": "centers/",
@@ -32,6 +33,7 @@ export class ApiService {
     "assignOrders": "orders/{{id}}/assign/",
     "deliverOrders": "orders/{{id}}/deliver/",
     "deliveringOrders": "orders/{{id}}/delivering/",
+    "archiveOrders": "orders/{{id}}/archive/",
     "packOrders": "orders/{{id}}/pack/",
     "centersProducts": "centers-products/",
     "oneCentersProducts": "centers-products/{{id}}/"
@@ -177,6 +179,27 @@ export class ApiService {
     let _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": auth }) };
 
     return this.http.put(url, data, _options)
+      .finally(function () {
+        self.loaderSer.display(false);
+      })
+      .catch(this.handleError)
+  }
+
+  delete(urlObject, token: string = "") {
+    this.loaderSer.display(true);
+    let self = this;
+
+    let auth = "";
+    if (token != "")
+      auth = token
+    else if (this.authSer.isLogin()) {
+      auth = this.authSer.getToken();
+    }
+    let url = this.createUrlString(urlObject.index, urlObject.variables, urlObject.filter, urlObject.ordering)
+
+    let _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": auth }) };
+
+    return this.http.delete(url, _options)
       .finally(function () {
         self.loaderSer.display(false);
       })

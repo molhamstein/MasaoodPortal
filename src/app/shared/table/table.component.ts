@@ -12,7 +12,7 @@ export class TableComponent implements OnInit {
   @Input() count: number;
   @Input() limit: number;
   @Input() currentPage: number;
-  @Input() withPage: boolean=true;
+  @Input() withPage: boolean = true;
 
   @Output() actionOnRow = new EventEmitter<any>();
   @Output() changePage = new EventEmitter<number>();
@@ -34,13 +34,35 @@ export class TableComponent implements OnInit {
     console.log(this.fields);
   }
 
+  checkCondition(onerow, condition) {
+    for (let index = 0; index < condition.length; index++) {
+      const element = condition[index];
+      var value = this.getByStringKey(onerow, element.key);
+      switch (element.operator) {
+        case "==": {
+          if (!(value == element.value))
+            return false
+          else
+            break;
+        }
+        case "!=": {
+          if (!(value != element.value))
+            return false
+          else
+            break;
+        }
+      }
+    }
+    return true
+  }
+
 
 
   getByStringKey(object, keyString) {
     return this.mainSer.globalServ.getByStringKey(object, keyString)
   }
 
-  formatDate(date,viewTime) {
+  formatDate(date, viewTime) {
     return this.mainSer.globalServ.formatDate(date, viewTime)
   }
 

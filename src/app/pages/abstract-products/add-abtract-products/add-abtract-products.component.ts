@@ -28,6 +28,7 @@ export class AddAbtractProductsComponent implements OnInit {
     nameAr: new FormControl("", Validators.required),
     descriptionEn: new FormControl("", Validators.required),
     descriptionAr: new FormControl("", Validators.required),
+    status: new FormControl("", Validators.required),
     gender: new FormControl("", Validators.required),
     gradeId: new FormControl("", Validators.required),
   });
@@ -36,6 +37,7 @@ export class AddAbtractProductsComponent implements OnInit {
   // constArray
   public genders = [{ "label": "male", "value": "male" }, { "label": "female", "value": "female" }]
   public languageKey = this.mainSer.globalServ.getLanguageKey()
+  public statusList = [{ "label": "available", "value": "available" }, { "label": "unavailable", "value": "unavailable" }]
 
   grades: Grade[] = []
 

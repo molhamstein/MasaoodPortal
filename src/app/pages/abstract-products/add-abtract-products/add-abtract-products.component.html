@@ -68,6 +68,20 @@
         </div>
       </div>
 
+      <div class="col-sm col-sm-6">
+        <div class="form-group">
+          <label for="type">{{'GLOBAL.STATUS'|translate}}</label>
+          <select formControlName="status" class="form-control">
+            <option value="" disabled selected>{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.STATUS'|translate}}</option>
+            <option *ngFor="let oneState of statusList" [selected]="" [value]="oneState.value">
+              {{"GLOBAL.STATUSLIST."+oneState.label|translate}}
+            </option>
+          </select>
+          <label *ngIf="abtractProductForm.get('status').invalid && isSubmitted"
+            class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
+        </div>
+      </div>
+
       <div class="col-sm-12">
         <app-upload-img [isMultiImg]="true" [arrayImageUrl]="arrayImageUrl"
           (getarrayImageUrlChange)="imageUrlChangeCallback($event)"></app-upload-img>
@@ -80,14 +94,14 @@
 
     <div class="row">
       <div class="col-sm submit-col">
-        <button  (click)="back()" class="btn btn-danger" type="button">
+        <button (click)="back()" class="btn btn-danger" type="button">
           {{"GLOBAL.BACK"|translate}}
         </button>
-        <button *ngIf="!isUpdate"  class="btn btn-success" type="submit">
+        <button *ngIf="!isUpdate" class="btn btn-success" type="submit">
           {{"GLOBAL.ADD"|translate}}
         </button>
         <!-- <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i> -->
-        <button *ngIf="isUpdate"  class=" btn btn-success" type="submit">
+        <button *ngIf="isUpdate" class=" btn btn-success" type="submit">
           {{"GLOBAL.UPDATE"|translate}}
         </button>
       </div>

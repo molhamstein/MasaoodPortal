@@ -23,12 +23,13 @@ export class ListAbstractProductComponent implements OnInit {
     { "key": "nameEn", "label": "GLOBAL.NAME_EN", "type": "string" },
     { "key": "rangePrice", "label": "GLOBAL.PRICE", "type": "price" },
     { "key": "gender", "label": "GLOBAL.GENDER", "type": "gender" },
+    { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
     { "key": "grade." + this.languageKey['name'], "label": "GLOBAL.GRADE", "type": "object" },
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date" },
     {
       "type": "buttons", "label": "", "buttons": [
-        { "action": "edit", "label": "GLOBAL.EDIT" },
-        { "action": "show", "label": "GLOBAL.SHOW" }]
+        { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" },
+        { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" }]
     }
   ]
   constructor(private abstrctProdSer: AbstractProductService, private mainSer: MainService) { }

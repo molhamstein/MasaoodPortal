@@ -100,13 +100,19 @@ export class ChangeOrderStatusComponent implements OnInit {
         { "label": "canceled", "value": "canceled" }
       ]
     } else {
-      this.statusList = [
-        { "label": "assigned", "value": "assigned" },
-        { "label": "packed", "value": "packed" },
-        { "label": "delivering", "value": "delivering" },
-        { "label": "delivered", "value": "delivered" },
-        { "label": "canceled", "value": "canceled" }
-      ]
+      if (this.status == 'delivered') {
+        this.statusList = [
+          { "label": "delivered", "value": "delivered" },
+        ]
+      }
+      else
+        this.statusList = [
+          { "label": "assigned", "value": "assigned" },
+          { "label": "packed", "value": "packed" },
+          { "label": "delivering", "value": "delivering" },
+          { "label": "delivered", "value": "delivered" },
+          { "label": "canceled", "value": "canceled" }
+        ]
     }
   }
   // change() {

@@ -22,7 +22,7 @@ export class ListOrderComponent implements OnInit {
 
 
   // Filter
-  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null }
+  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "deleted": false }
   public statusFilter = []
 
   public dateFilter = [
@@ -31,7 +31,7 @@ export class ListOrderComponent implements OnInit {
   ]
 
   clearFilter() {
-    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null }
+    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "deleted": false }
     this.dateFilter = [
       { "label": "FROM", "type": "from", "value": null },
       { "label": "TO", "type": "to", "value": null },
@@ -66,8 +66,10 @@ export class ListOrderComponent implements OnInit {
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date", "viewDate": true },
     {
       "type": "buttons", "label": "", "buttons": [
-        { "action": "changeState", "label": "GLOBAL.CHANGESTATE" },
-        { "action": "show", "label": "GLOBAL.SHOW" }
+        { "type": "success", "action": "changeState", "label": "GLOBAL.CHANGESTATE" },
+        { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" },
+        { "type": "warning", "action": "archive", "label": "GLOBAL.ARCHIVE" },
+        { "type": "danger", "action": "delete", "label": "GLOBAL.DELETE", "condition": [{ "key": "status", "value": "delivered", "operator": "!=" }] }
       ]
     }
   ]
@@ -130,6 +132,21 @@ export class ListOrderComponent implements OnInit {
         })
       })
     }
+    else if (data.event == 'archive') {
+      this.dialogSer.confirmMessage("archive", function () {
+        self.orderSer.archiveOrder(self.arrayOrder[data.index].id, function (err: appError, data) {
+          self.getData()
+        })
+      })
+    }
+    else if (data.event == 'delete') {
+      this.dialogSer.confirmMessage("delete", function () {
+        self.orderSer.deleteOrder(self.arrayOrder[data.index].id, function (err: appError, data) {
+          self.getData()
+        })
+      })
+    }
+
   }
 
 

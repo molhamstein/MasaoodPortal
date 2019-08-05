@@ -17,6 +17,8 @@ export class Order {
   user: any;
   isDelivery: boolean;
   status: string;
+  deleted: boolean;
+  archived: boolean;
 
   constructor(order) {
     this.id = order.id || null;
@@ -38,6 +40,8 @@ export class Order {
     this.assignedAt = order.assignedAt || null;
     this.status = order.status || ""
     this.products = order.products || []
+    this.deleted = order.deleted || false
+    this.archived = order.archived || false
   }
 
   static arrayconstructor(data: any[]): Order[] {

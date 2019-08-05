@@ -57,12 +57,12 @@ export class ShowAbstractProductComponent implements OnInit {
   fields = [
     { "key": "code", "label": "GLOBAL.CODE", "type": "string" },
     { "key": "price", "label": "GLOBAL.PRICE", "type": "price" },
-    { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
+    // { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
     { "key": "abstractProduct." + this.languageKey['name'], "label": "GLOBAL.ABSTRACTPRODUCT", "type": "object" },
     { "key": "size." + this.languageKey['name'], "label": "GLOBAL.SIZE", "type": "object" },
     {
       "type": "buttons", "label": "", "buttons": [
-        { "action": "edit", "label": "GLOBAL.EDIT" }]
+        { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" }]
     }
   ]
 

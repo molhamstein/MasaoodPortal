@@ -65,7 +65,7 @@ export class ShowCenterComponent implements OnInit {
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date" },
     {
       "type": "buttons", "label": "", "buttons": [
-        { "action": "edit", "label": "GLOBAL.EDIT" }]
+        { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" }]
     }
   ]
 

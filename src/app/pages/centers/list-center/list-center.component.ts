@@ -23,10 +23,10 @@ export class ListCenterComponent implements OnInit {
     { "key": "statesCount", "label": "GLOBAL.STATESCOUNT", "type": "price" },
     {
       "type": "buttons", "label": "", "buttons": [
-        { "action": "edit", "label": "GLOBAL.EDIT" },
-        { "action": "show", "label": "GLOBAL.SHOW" }
-      ]
+        { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" },
+        { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" }]
     }
+
   ]
   constructor(private centerSer: CenterService, private mainSer: MainService) { }
 

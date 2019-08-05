@@ -19,12 +19,14 @@ export class DialogService {
   constructor(private mainSer: MainService, private modalService: NgbModal) { }
 
 
-  confirmMessage(callback: Function) {
+  confirmMessage(type, callback: Function) {
     var modalRef = this.modalService.open(ConfirmComponent)
     modalRef.result.then((data) => {
-      console.log(data)
+      if (data)
+        callback()
     }, (reason) => {
     });
+    modalRef.componentInstance.type = type;
 
   }
 

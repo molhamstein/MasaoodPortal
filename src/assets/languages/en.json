@@ -46,7 +46,9 @@
     "CONFIRMDELETE": {
       "AREYOUSURE?": "Are you sure ?",
       "YOUWANTTODELETE": "you want to delete",
+      "YOUWANTTOARCHIVE": "you want to archive",
       "YESDELETEIT": "Yes, delete it!",
+      "YESARCHIVEIT": "Yes, archive it!",
       "NOTHANKS": "No, Thanks"
     },
     "SUCCESS": {
@@ -75,6 +77,8 @@
     "ADD": "Add",
     "EDIT": "Edit",
     "SHOW": "Show",
+    "ARCHIVE": "Archive",
+    "DELETE": "Delete",
     "BACK": "Back",
     "CANCEL": "Cancel",
     "CHANGE": "Change",
