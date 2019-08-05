@@ -52,7 +52,7 @@
           <span *ngIf="oneField.type=='date'">{{formatDate(onerow[oneField.key],oneField.viewDate||false)}}</span>
           <span *ngIf="oneField.type=='object'">{{getByStringKey(onerow,oneField.key)}}</span>
           <div *ngIf="oneField.type=='buttons'">
-            <div style="margin: 0px 5px;float: left;" *ngFor="let oneButton of oneField.buttons">
+            <div style="margin: 5px 5px;float: left;" *ngFor="let oneButton of oneField.buttons">
               <button *ngIf="oneButton.condition==null" (click)="action(onerow.id,oneButton.action,index)"
                 class="btn btn-{{oneButton.type}}" type="button">{{oneButton.label|translate}}
               </button>
