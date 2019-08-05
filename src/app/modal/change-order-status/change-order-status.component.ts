@@ -41,7 +41,7 @@ export class ChangeOrderStatusComponent implements OnInit {
 
     var data = {}
     var type = ""
-    if (this.status == "Canceled") {
+    if (this.status == "canceled") {
       type = "cancelOrders"
     }
     else if (this.status == "assigned") {

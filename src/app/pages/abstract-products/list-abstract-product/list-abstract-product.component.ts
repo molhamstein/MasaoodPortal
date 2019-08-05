@@ -18,8 +18,10 @@ export class ListAbstractProductComponent implements OnInit {
   public languageKey = this.mainSer.globalServ.getLanguageKey()
 
   fields = [
+    { "key": "images[0].file", "label": "", "type": "image" },
     { "key": "nameAr", "label": "GLOBAL.NAME_AR", "type": "string" },
     { "key": "nameEn", "label": "GLOBAL.NAME_EN", "type": "string" },
+    { "key": "rangePrice", "label": "GLOBAL.PRICE", "type": "price" },
     { "key": "gender", "label": "GLOBAL.GENDER", "type": "gender" },
     { "key": "grade." + this.languageKey['name'], "label": "GLOBAL.GRADE", "type": "object" },
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date" },

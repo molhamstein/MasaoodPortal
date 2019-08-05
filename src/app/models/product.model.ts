@@ -16,7 +16,7 @@ export class Product {
     this.id = product.id || null;
     this.code = product.code || "";
     this.status = product.status || "";
-    this.price = product.price || "";
+    this.price = Math.round(product.price * 10) / 10 || null;
     this.size = new Size(product.size) || null;
     this.abstractProduct = new AbstractProduct(product.abstractProduct) || null;
     this.sizeId = product.sizeId || this.size.id || "";

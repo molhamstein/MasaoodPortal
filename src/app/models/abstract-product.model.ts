@@ -12,6 +12,7 @@ export class AbstractProduct {
   grade: Grade
   images: Image[];
   createdAt: Date;
+  rangePrice: string;
 
   constructor(grade) {
     this.id = grade.id || null;
@@ -25,7 +26,7 @@ export class AbstractProduct {
     this.images = Image.arrayconstructor(grade.images) || []
     this.imagesId = grade.imagesId || []
     this.createdAt = grade.createdAt || new Date()
-
+    this.rangePrice = this.calcRangeProduct(grade)
   }
 
   static arrayConstructor(data: any[]): AbstractProduct[] {
@@ -42,6 +43,19 @@ export class AbstractProduct {
     }
   }
 
+  calcRangeProduct(abstractProd) {
+    var minPrice = Number.MAX_SAFE_INTEGER;
+    var maxPrice = Number.MIN_SAFE_INTEGER;
+    if (abstractProd.products == null || abstractProd.products.length == 0)
+      return ""
+    abstractProd.products.forEach(element => {
+      if (element.price < minPrice)
+        minPrice = Math.round(element.price * 10) / 10;
+      if (element.price > maxPrice)
+        maxPrice = Math.round(element.price * 10) / 10;
+    });
+    return minPrice + " ~ " + maxPrice
+  }
 
 }
 

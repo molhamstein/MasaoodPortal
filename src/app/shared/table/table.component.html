@@ -10,6 +10,11 @@
     <tbody>
       <tr *ngFor="let onerow of data;let index=index">
         <td *ngFor="let oneField of fields">
+          <div *ngIf="oneField.type=='image'" class="divImg">
+            <img *ngIf="getByStringKey(onerow,oneField.key)!=''" src="{{getByStringKey(onerow,oneField.key)}}">
+            <img *ngIf="getByStringKey(onerow,oneField.key)==''" src="../../../assets/images/clothes-hanger.jpg">
+          </div>
+
           <span *ngIf="oneField.type=='string'"> {{onerow[oneField.key]}}</span>
           <strong *ngIf="oneField.type=='price'" class="badge badge-info"> {{onerow[oneField.key]}}</strong>
 
@@ -18,20 +23,15 @@
           <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='available')" class="badge badge-success">
             {{"GLOBAL.STATUSLIST."+ onerow[oneField.key]|translate}}</strong>
 
-            
-            <strong
-            *ngIf="oneField.type=='status' && ( onerow[oneField.key]=='assigned')"
+
+          <strong *ngIf="oneField.type=='status' && ( onerow[oneField.key]=='assigned')"
             class="badge badge-dark-warning">
             {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
 
-            <strong
-            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='pending')"
-            class="badge badge-warning">
+          <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='pending')" class="badge badge-warning">
             {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
 
-            <strong
-            *ngIf="oneField.type=='status' && (onerow[oneField.key]=='packed')"
-            class="badge badge-danger">
+          <strong *ngIf="oneField.type=='status' && (onerow[oneField.key]=='packed')" class="badge badge-danger">
             {{"GLOBAL.STATUSLIST."+onerow[oneField.key]|translate}}</strong>
 
 

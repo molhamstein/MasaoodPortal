@@ -4,7 +4,7 @@
       <div class="col-sm col-sm-6">
         <div class="form-group">
           <label for="numberOfTimes">{{"GLOBAL.CODE"|translate}}</label>
-          <input class="form-control" formControlName="code" type="number" min="1" (input)="isSubmitted=false;message=''"
+          <input class="form-control" formControlName="code" type="text" (input)="isSubmitted=false;message=''"
             placeholder="{{'GLOBAL.ENTER'|translate}} {{'GLOBAL.CODE'|translate}}">
           <label *ngIf="productForm.get('code').invalid  && isSubmitted"
             class="text-danger errorLabel">{{'ERROR_FORM.ERROR_FIELD_REQUIRED'|translate}}</label>
