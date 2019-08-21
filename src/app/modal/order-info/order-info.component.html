@@ -87,7 +87,7 @@
         </div>
 
       </div>
-      <div class="row" style="margin: 0px 15px;" *ngIf="order.products">
+      <div class="row" style="margin: 0px 0px;max-height: 200px;overflow: scroll;" *ngIf="order.products">
         <div class="col-sm-12">
           <app-custom-table [fields]="fields" [withPage]="false" [count]="order.products.length"
             [limit]="order.products.length" [data]="order.products">
