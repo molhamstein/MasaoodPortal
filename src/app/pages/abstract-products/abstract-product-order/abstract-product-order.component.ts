@@ -43,7 +43,7 @@ export class AbstractProductOrderComponent implements OnInit {
       var arrayOfOrder = []
       for (let index = 0; index < self.arrayAbstractProduct.length; index++) {
         const element = self.arrayAbstractProduct[index];
-        arrayOfOrder.push({ "id": element.id, "order": self.arrayAbstractProduct.length - index })
+        arrayOfOrder.push({ "id": element.id, "order": index + 1 })
         if (arrayOfOrder.length == self.arrayAbstractProduct.length) {
           self.abstrctProdSer.changeOrder(arrayOfOrder, function () {
             self.back()

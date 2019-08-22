@@ -18,7 +18,7 @@ export class AbstractProductService {
       })
   }
   getPaginationObject(limit, offset, callback) {
-    this.mainSer.APIServ.get({ "index": "abstractProducts", "filter": { "limit": limit, "offset": offset }, "ordering": "-order" })
+    this.mainSer.APIServ.get({ "index": "abstractProducts", "filter": { "limit": limit, "offset": offset }, "ordering": "+order" })
       .subscribe((data: any) => {
         callback(null, AbstractProduct.arrayConstructor(data.results), data.count)
       }, error => {
@@ -27,7 +27,7 @@ export class AbstractProductService {
   }
 
   getAllObject(callback) {
-    this.mainSer.APIServ.get({ "index": "abstractProducts", "ordering": "-order" })
+    this.mainSer.APIServ.get({ "index": "abstractProducts", "ordering": "+order" })
       .subscribe((data: any) => {
         callback(null, AbstractProduct.arrayConstructor(data))
       }, error => {
