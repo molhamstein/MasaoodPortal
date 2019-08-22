@@ -21,6 +21,7 @@ export class ListAbstractProductComponent implements OnInit {
     { "key": "images[0].file", "label": "", "type": "image" },
     { "key": "nameAr", "label": "GLOBAL.NAME_AR", "type": "string" },
     { "key": "nameEn", "label": "GLOBAL.NAME_EN", "type": "string" },
+    { "key": "order", "label": "GLOBAL.ORDER", "type": "string" },
     { "key": "rangePrice", "label": "GLOBAL.PRICE", "type": "price" },
     { "key": "gender", "label": "GLOBAL.GENDER", "type": "gender" },
     { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
@@ -65,5 +66,8 @@ export class ListAbstractProductComponent implements OnInit {
     else if (data.event == 'show') {
       this.mainSer.globalServ.goTo("show-abstract-product/" + data.id)
     }
+  }
+  goToOrder() {
+    this.mainSer.globalServ.goTo("order-abstract-product")
   }
 }

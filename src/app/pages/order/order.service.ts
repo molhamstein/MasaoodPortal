@@ -97,6 +97,17 @@ export class OrderService {
       })
   }
 
+  printOrder(id, callback) {
+    // callback(null, { "link": "https://www.google.com/" })
+    this.mainSer.APIServ.get({ "index": "printOrder", "variables": { "id": id } })
+      .subscribe((data: any) => {
+        console.log(data);
+        callback(null, data)
+      }, error => {
+        callback(error, null)
+      })
+  }
+
 
 
 }

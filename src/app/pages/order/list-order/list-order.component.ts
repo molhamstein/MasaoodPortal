@@ -5,6 +5,7 @@ import { OrderService } from './../order.service';
 import { Order } from './../../../models/order.model';
 import { Component, OnInit } from '@angular/core';
 import { SelectDropdownComponent } from 'ng-select/select-dropdown.component';
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-list-order',
@@ -63,12 +64,19 @@ export class ListOrderComponent implements OnInit {
     { "key": "total", "label": "GLOBAL.TOTAL", "type": "price" },
     { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
     { "key": "user.first_name", "label": "GLOBAL.OWNER", "type": "object" },
+    {
+      "key": "isDelivery", "label": "GLOBAL.DELIVERYTYPE", "type": "multiValue", "isMultiLevel": false, "state": [
+        { "value": true, "label": "GLOBAL.DELIVERYS.DELIVERY", "type": "primary" },
+        { "value": false, "label": "GLOBAL.DELIVERYS.PICKUP", "type": "info" }
+      ]
+    },
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date", "viewDate": true },
     {
       "type": "buttons", "label": "", "buttons": [
         { "type": "success", "action": "changeState", "label": "GLOBAL.CHANGESTATE" },
         { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" },
         { "type": "warning", "action": "archive", "label": "GLOBAL.ARCHIVE" },
+        { "type": "info", "action": "print", "label": "GLOBAL.PRINT" },
         { "type": "danger", "action": "delete", "label": "GLOBAL.DELETE", "condition": [{ "key": "status", "value": "delivered", "operator": "!=" }] }
       ]
     }
@@ -146,6 +154,11 @@ export class ListOrderComponent implements OnInit {
         })
       })
     }
+    else if (data.event == 'print') {
+      var orderId = self.arrayOrder[data.index].id;
+      window.open("http://174.138.28.26:3434/api/v1/orders/" + orderId + "/print/")
+    }
+
 
   }
 

@@ -62,6 +62,20 @@ export class TableComponent implements OnInit {
     return this.mainSer.globalServ.getByStringKey(object, keyString)
   }
 
+  getFromMultiValue(object, fielde) {
+    // console.log(object[key]);
+    // console.log(key);
+    // console.log(object);
+    if (!fielde.isMultiLevel)
+      var value = object[fielde.key]
+    for (let index = 0; index < fielde.state.length; index++) {
+      const element = fielde.state[index];
+      if (element.value == value) {
+        return element
+      }
+    }
+  }
+
   formatDate(date, viewTime) {
     return this.mainSer.globalServ.formatDate(date, viewTime)
   }

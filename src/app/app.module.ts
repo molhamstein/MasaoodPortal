@@ -25,6 +25,8 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { AppDirectionService } from './service/app-direction.service';
 import { Http, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSortableModule } from 'ngx-sortable'
+// import { DndListModule } from 'ngx-drag-and-drop-lists';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -71,6 +73,7 @@ import { AddUserComponent } from './pages/users/add-user/add-user.component';
 import { ShowCenterComponent } from './pages/centers/show-center/show-center.component';
 import { AddCenterProductComponent } from './pages/centerProduct/add-center-product/add-center-product.component';
 import { ListStafUserComponent } from './pages/users/list-staf-user/list-staf-user.component';
+import { AbstractProductOrderComponent } from './pages/abstract-products/abstract-product-order/abstract-product-order.component';
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/languages/', '.json');
@@ -90,7 +93,7 @@ export function HttpLoaderFactory(http: Http) {
     HomeComponent,
 
     // // abstract
-    AddAbtractProductsComponent, ListAbstractProductComponent, ShowAbstractProductComponent,
+    AddAbtractProductsComponent, ListAbstractProductComponent, ShowAbstractProductComponent, AbstractProductOrderComponent,
 
     // // product
     AddProductComponent,
@@ -99,7 +102,10 @@ export function HttpLoaderFactory(http: Http) {
     ListOrderComponent,
 
     // // user
-    ListUserComponent,
+    ListUserComponent, AddUserComponent, ListStafUserComponent,
+
+    // // center
+    ListCenterComponent, AddCenterComponent, ShowCenterComponent, AddCenterProductComponent,
 
     // // auth
     loginComponent,
@@ -108,8 +114,9 @@ export function HttpLoaderFactory(http: Http) {
     TableComponent, UploadImgComponent, StatusFilterComponent, DateFilterComponent,
 
 
+
     // // dialog
-    ConfirmComponent, SuccessComponent, FailedComponent, OrderInfoComponent, ChangeOrderStatusComponent, ListCenterComponent, AddCenterComponent, AddUserComponent, ShowCenterComponent, AddCenterProductComponent, ListStafUserComponent,
+    ConfirmComponent, SuccessComponent, FailedComponent, OrderInfoComponent, ChangeOrderStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,6 +131,7 @@ export function HttpLoaderFactory(http: Http) {
     ReactiveFormsModule,
     FormsModule,
     SelectModule,
+    NgxSortableModule,
     NgbModule.forRoot(),
     PaginationModule.forRoot(),
     AgmCoreModule.forRoot({
@@ -142,7 +150,7 @@ export function HttpLoaderFactory(http: Http) {
   providers: [
     HttpClient,
     // main services
-    AppDirectionService, AuthGuardService, MainService, GlobalService, AuthService, LoaderService, ApiService, DialogService,TransfereService,
+    AppDirectionService, AuthGuardService, MainService, GlobalService, AuthService, LoaderService, ApiService, DialogService, TransfereService,
     // pages services
     CenterService, LoginService, StatesService, UploadImgService, GradeService, AbstractProductService, ProductService, SizeService, OrderService, UserService, GroupService, CenterProductService,
     // others

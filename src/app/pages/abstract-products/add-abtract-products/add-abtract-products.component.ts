@@ -30,7 +30,7 @@ export class AddAbtractProductsComponent implements OnInit {
     descriptionAr: new FormControl("", Validators.required),
     status: new FormControl("", Validators.required),
     gender: new FormControl("", Validators.required),
-    gradeId: new FormControl("", Validators.required),
+    gradeId: new FormControl("", Validators.required)
   });
 
 

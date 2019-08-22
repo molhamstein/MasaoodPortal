@@ -2,6 +2,7 @@ import { Grade } from './grade.model';
 import { Image } from './image.model';
 export class AbstractProduct {
   id: number;
+  order: number;
   nameEn: string;
   nameAr: string;
   descriptionEn: string;
@@ -27,7 +28,8 @@ export class AbstractProduct {
     this.imagesId = grade.imagesId || []
     this.createdAt = grade.createdAt || new Date()
     this.rangePrice = this.calcRangeProduct(grade)
-    this.status = grade.status || 'available'
+    this.status = grade.status || 'available';
+    this.order = grade.order || 0;
   }
 
   static arrayConstructor(data: any[]): AbstractProduct[] {

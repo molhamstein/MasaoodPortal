@@ -27,6 +27,10 @@ export class ConfirmComponent implements OnInit {
       this.title = "YOUWANTTODELETE"
       this.yesButton = "YESDELETEIT"
     }
+    else if (this.type == 'CHANGEORDER') {
+      this.title = "YOUWANTTOCHANGEABSTRACTPRODUCTSORDER"
+      this.yesButton = "YESCHANGE"
+    }
   }
 
   close() {

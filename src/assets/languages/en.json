@@ -10,6 +10,7 @@
     "EDITABSTRACTPRODUCT": "Edit Base Product",
     "SHOWABSTRACTPRODUCT": "Show Base Product",
     "LISTABSTRACTPRODUCT": "All Base Prdouct",
+    "ORDERABSTRACTPRODUCT": "Order Base Prdouct",
 
     "ADDPRODUCT": "Add Product",
     "EDITPRODUCT": "Edit Product",
@@ -46,8 +47,10 @@
     "CONFIRMDELETE": {
       "AREYOUSURE?": "Are you sure ?",
       "YOUWANTTODELETE": "you want to delete",
+      "YOUWANTTOCHANGEABSTRACTPRODUCTSORDER": "you want to change base products order",
       "YOUWANTTOARCHIVE": "you want to archive",
       "YESDELETEIT": "Yes, delete it!",
+      "YESCHANGE": "Yes, Change All!",
       "YESARCHIVEIT": "Yes, archive it!",
       "NOTHANKS": "No, Thanks"
     },
@@ -71,13 +74,20 @@
     "500": "Some thing is error",
     "401": "Email is already used",
     "402": "Email is already used",
-    "454": "Center does not have a product"
+    "454": "Center does not have a product",
+    "452": "Center Not Found"
+  },
+  "ERROR_TITLE": {
+    "452": "Please Assign Order To Center First"
   },
   "GLOBAL": {
     "ADD": "Add",
     "EDIT": "Edit",
     "SHOW": "Show",
     "ARCHIVE": "Archive",
+    "PRINT": "Print",
+    "SAVE": "Save",
+    "RESET": "Reset",
     "DELETE": "Delete",
     "BACK": "Back",
     "CANCEL": "Cancel",
@@ -85,8 +95,10 @@
     "DONE": "Done",
     "STATUS": "Status",
     "CHANGESTATE": "Change State",
+    "CHANGEORDER": "Change Didsply Order ",
     "CLEAR": "Clear",
     "PRICE": "Price",
+    "ORDER": "Order",
     "TOTAL": "Total",
     "CODE": "Code",
     "UPDATE": "Update",
@@ -103,6 +115,7 @@
     "ADDPRODUCT": "Add Product",
     "PRODUCT": "Proudct",
     "ADDCENTER": "Add Center",
+    "DELIVERYTYPE": "Delivery Type",
     "ADDCENTERPRODUCT": "Add Center Product",
     "ADDUSER": "Add User",
     "EMAIL": "Email",
@@ -123,6 +136,10 @@
     "GENDERS": {
       "male": "Male",
       "female": "Female"
+    },
+    "DELIVERYS": {
+      "DELIVERY": "Delivery",
+      "PICKUP": "Pick Up"
     },
     "STATUSLIST": {
       "all": "All",

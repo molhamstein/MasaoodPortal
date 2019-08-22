@@ -9,12 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FailedComponent implements OnInit {
   @Input() data: any = {};
   errorCode: number;
+  errorTitle: number;
   constructor(public activeModal: NgbActiveModal) {
   }
 
   ngOnInit() {
     console.log(this.data)
     this.errorCode = this.data['errorCode']
+    if (this.data['errorTitle'])
+      this.errorTitle = this.data['errorTitle']
   }
 
   close() {

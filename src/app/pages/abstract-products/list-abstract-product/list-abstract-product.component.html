@@ -1,13 +1,16 @@
 <div class="container">
 
-  <div class="row"  style="padding-bottom: 10px;">
+  <div class="row" style="padding-bottom: 10px;margin: 0px;">
     <button (click)="addProduct()" class="btn btn-success" style="float: right;" type="button">
       {{"GLOBAL.ADDABSTRACTPRODUCT"|translate}}
     </button>
+    <button (click)="goToOrder()" class="btn btn-primary" style="float: right; margin: 0px 10px" type=" button">
+      {{"GLOBAL.CHANGEORDER"|translate}}
+    </button>
   </div>
-  <div style="padding: 10px 0px;">
-    <app-custom-table [fields]="fields" [count]="count" [limit]="limit"
-      [data]="arrayAbstractProduct" (changePage)="changePages($event)" (actionOnRow)="action($event)">
+  <div style="overflow-x: scroll;">
+    <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayAbstractProduct"
+      (changePage)="changePages($event)" (actionOnRow)="action($event)">
     </app-custom-table>
   </div>
 

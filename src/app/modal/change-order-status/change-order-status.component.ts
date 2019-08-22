@@ -66,8 +66,14 @@ export class ChangeOrderStatusComponent implements OnInit {
         }, (reason) => {
         });
         modalRef.componentInstance.data = { "errorCode": 454 };
+      } else if (err && err.status == 452) {
+        var modalRef = selt.modalService.open(FailedComponent)
+        modalRef.result.then((data) => {
+          console.log(data)
+        }, (reason) => {
+        });
+        modalRef.componentInstance.data = { "errorCode": 452, "errorTitle": 452 };
       }
-
       else
         self.activeModal.close(true)
     })
@@ -90,28 +96,32 @@ export class ChangeOrderStatusComponent implements OnInit {
     this.centerSer.getAllObject(function (err: appError, data) {
       self.center = data;
     })
+    var disabledOption = true
+    if (self.centerId)
+      disabledOption = false
+
     if (this.roleType == 'admin') {
       this.statusList = [
-        { "label": "pending", "value": "pending" },
-        { "label": "assigned", "value": "assigned" },
-        { "label": "packed", "value": "packed" },
-        { "label": "delivering", "value": "delivering" },
-        { "label": "delivered", "value": "delivered" },
+        { "label": "pending", "value": "pending", "disabled": false },
+        { "label": "assigned", "value": "assigned", "disabled": false },
+        { "label": "packed", "value": "packed", "disabled": disabledOption },
+        { "label": "delivering", "value": "delivering", "disabled": disabledOption },
+        { "label": "delivered", "value": "delivered", "disabled": disabledOption },
         { "label": "canceled", "value": "canceled" }
       ]
     } else {
       if (this.status == 'delivered') {
         this.statusList = [
-          { "label": "delivered", "value": "delivered" },
+          { "label": "delivered", "value": "delivered", "disabled": false },
         ]
       }
       else
         this.statusList = [
-          { "label": "assigned", "value": "assigned" },
-          { "label": "packed", "value": "packed" },
-          { "label": "delivering", "value": "delivering" },
-          { "label": "delivered", "value": "delivered" },
-          { "label": "canceled", "value": "canceled" }
+          { "label": "assigned", "value": "assigned", "disabled": false },
+          { "label": "packed", "value": "packed", "disabled": disabledOption },
+          { "label": "delivering", "value": "delivering", "disabled": disabledOption },
+          { "label": "delivered", "value": "delivered", "disabled": disabledOption },
+          { "label": "canceled", "value": "canceled", "disabled": disabledOption }
         ]
     }
   }

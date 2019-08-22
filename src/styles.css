@@ -24639,3 +24639,12 @@ ng-select.ng-select>div>div.single>div.placeholder {
   line-height: 23px !important;
 
 }
+
+
+.sortable-container {
+  /* background-color: red; */
+}
+
+.sortable-header {
+  display: none;
+}

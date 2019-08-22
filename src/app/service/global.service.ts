@@ -15,6 +15,10 @@ export class GlobalService {
         "operator": false,
         "admin": true,
       },
+      "order-abstract-product": {
+        "operator": false,
+        "admin": true,
+      },
       "operator": false,
       "add-abstract-product": {
         "operator": false,

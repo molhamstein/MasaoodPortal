@@ -7,7 +7,7 @@
     <div class="row" style="padding :20px 10px;">
       <div class="col-sm-6">
         <select name="select" class="form-control form-control-inverse" (change)="changeStatus($event.target.value)">
-          <option *ngFor="let oneState of statusList" [value]="oneState.value"
+          <option *ngFor="let oneState of statusList" [disabled]="oneState.disabled" [value]="oneState.value"
             [attr.selected]="oneState.value == status ? true : null">
             {{"GLOBAL.STATUSLIST."+ oneState.label|translate}}
           </option>

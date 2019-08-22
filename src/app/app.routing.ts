@@ -1,3 +1,4 @@
+import { AbstractProductOrderComponent } from './pages/abstract-products/abstract-product-order/abstract-product-order.component';
 import { ListStafUserComponent } from './pages/users/list-staf-user/list-staf-user.component';
 import { AddCenterProductComponent } from './pages/centerProduct/add-center-product/add-center-product.component';
 import { AddUserComponent } from './pages/users/add-user/add-user.component';
@@ -43,6 +44,14 @@ export const AppRoutes: Routes = [
         canActivate: [AuthGuardService],
         data: {
           "pageTitle": "ADDABSTRACTPRODUCT"
+        }
+      },
+      {
+        path: 'order-abstract-product',
+        component: AbstractProductOrderComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          "pageTitle": "ORDERABSTRACTPRODUCT"
         }
       },
       {

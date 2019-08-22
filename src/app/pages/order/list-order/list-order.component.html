@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin: 0px;">
     <div class="col-sm-10">
       <app-status-filter [currentState]="filter.status__in" (changeStatus)="changeStatusParent($event)"
         [statusFilter]="statusFilter"></app-status-filter>
@@ -13,7 +13,7 @@
   <!-- <div class="row"> -->
   <app-date-filter [dateFilter]="dateFilter" (changeDate)="changeDateParent($event)"></app-date-filter>
   <!-- </div> -->
-  <app-custom-table [fields]="fields" [count]="count" [limit]="limit"  [data]="arrayOrder"
+  <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayOrder"
     (changePage)="changePages($event)" (actionOnRow)="action($event)">
   </app-custom-table>
 

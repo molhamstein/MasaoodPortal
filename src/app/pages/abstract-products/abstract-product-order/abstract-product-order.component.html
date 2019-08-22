@@ -1,0 +1,31 @@
+<div class="row" style="margin-bottom: 10px;">
+  <div class="col-sm-2">
+    <button class="btn btn-primary" style="float: right;width: 100%;"
+      (click)="save()">{{"GLOBAL.SAVE"| translate}}</button>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-danger" style="float: right;width: 100%;margin-left: 10px;"
+      (click)="getData()">{{"GLOBAL.RESET"| translate}}</button>
+  </div>
+
+  <div class="col-sm-2">
+    <button class="btn btn-warning" style="float: right;width: 100%;margin-left: 10px;"
+      (click)="back()">{{"GLOBAL.BACK"| translate}}</button>
+  </div>
+</div>
+<ngx-sortable *ngIf="arrayAbstractProduct.length!=0" [items]="arrayAbstractProduct" [name]="'List'"
+  [listStyle]="listStyle" (listSorted)="listSorted($event)">
+  <ng-template let-item>
+    <div class="sortable-list-item item">
+      <div class="orderBox">
+        <p>{{arrayAbstractProduct.length - arrayAbstractProduct.indexOf(item)}}</p>
+      </div>
+      <div class="img">
+        <img src="{{item.images[0].file}}">
+      </div>
+      <div class="name" style="padding: 10px 0px;">
+        <h5>{{item.nameEn}}</h5>
+      </div>
+    </div>
+  </ng-template>
+</ngx-sortable>

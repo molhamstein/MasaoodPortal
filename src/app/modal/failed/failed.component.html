@@ -9,6 +9,7 @@
     </div>
 
     <h4>{{"ERROR_CODE."+errorCode| translate}}</h4>
+    <p *ngIf="errorTitle">{{"ERROR_TITLE."+errorTitle| translate}}</p>
     <ul class="cd-buttons">
       <li (click)="close()">
         {{"MODAL.FAILED.OK"| translate}}

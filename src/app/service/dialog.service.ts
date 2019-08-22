@@ -53,7 +53,7 @@ export class DialogService {
   viewOrder(order, callback: Function) {
     var modalRef = this.modalService.open(OrderInfoComponent)
     modalRef.result.then((data) => {
-      if (true)
+      if (data==true)
         callback()
     }, (reason) => {
     });

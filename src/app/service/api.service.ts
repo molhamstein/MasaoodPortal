@@ -36,7 +36,9 @@ export class ApiService {
     "archiveOrders": "orders/{{id}}/archive/",
     "packOrders": "orders/{{id}}/pack/",
     "centersProducts": "centers-products/",
-    "oneCentersProducts": "centers-products/{{id}}/"
+    "oneCentersProducts": "centers-products/{{id}}/",
+    "printOrder": "orders/{{id}}/print/",
+    "changeAbstractProductsOrder": "abstract-products/batch-order/"
 
   }
 
@@ -97,7 +99,7 @@ export class ApiService {
     }
     let url = this.createUrlString(urlObject.index, urlObject.variables, urlObject.filter, urlObject.ordering)
 
-    let _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', "Authorization": auth }) };
+    let _options = { headers: new HttpHeaders({ "Authorization": auth }) };
 
     return this.http.get(url, _options)
       .finally(function () {

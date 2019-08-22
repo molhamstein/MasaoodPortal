@@ -1,0 +1,40 @@
+.item {
+  height: 60px;
+  padding: 10px;
+}
+
+.item .img {
+  height: 100%;
+  width: 20%;
+  max-width: 100px;
+  float: left;
+}
+
+
+.item .name {
+  float: left;
+  height: 100%;
+}
+
+.item .img img {
+  height: 100%;
+
+}
+
+.item .orderBox {
+  float: left;
+  padding: 8px 0px;
+  height: 60px;
+  width: 45px;
+  margin: 0px 20px;
+}
+
+.item .orderBox p {
+  background-color: #002f43;
+  height: 30px;
+  width: 30px;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  padding-top: 6px;
+}
