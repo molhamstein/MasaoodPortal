@@ -7,15 +7,25 @@
     <div class="col-sm-2">
       <button class="btn btn-primary" style="float: right;"
         (click)="clearFilter()">{{"GLOBAL.CLEAR"| translate}}</button>
-
     </div>
   </div>
-  <!-- <div class="row"> -->
-  <app-date-filter [dateFilter]="dateFilter" (changeDate)="changeDateParent($event)"></app-date-filter>
-  <!-- </div> -->
-  <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayOrder"
-    (changePage)="changePages($event)" (actionOnRow)="action($event)">
-  </app-custom-table>
+
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-md-3">
+      <app-input-search [type]="'number'" (changeValue)="changeValueParent($event)" [placeholder]="'GLOBAL.MOBILE'">
+      </app-input-search>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <app-date-filter [dateFilter]="dateFilter" (changeDate)="changeDateParent($event)"></app-date-filter>
+    </div>
+  </div>
+  <div style="overflow-x: scroll;">
+    <app-custom-table [fields]="fields" [count]="count" [limit]="limit" [data]="arrayOrder"
+      (changePage)="changePages($event)" (actionOnRow)="action($event)">
+    </app-custom-table>
+  </div>
 
 
 </div>

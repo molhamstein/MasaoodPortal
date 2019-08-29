@@ -50,6 +50,11 @@ export class ListUserComponent implements OnInit {
     })
   }
 
+  changeValueParent(event) {
+    this.filter.mobile__icontains = event;
+    this.getFilter()
+  }
+
   action(data) {
     if (data.event == 'edit') {
       this.mainSer.globalServ.goTo("edit-abstract-product/" + data.id)

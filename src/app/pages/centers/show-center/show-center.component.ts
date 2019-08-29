@@ -42,7 +42,7 @@ export class ShowCenterComponent implements OnInit {
 
 
   back() {
-    this.mainSer.globalServ.goTo("list-abstract-product")
+    this.mainSer.globalServ.goTo("list-center")
   }
 
   ngOnInit() {

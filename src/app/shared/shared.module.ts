@@ -35,7 +35,7 @@ import {DataFilterPipe} from "./element/data-filter.pipe";
     CardComponent,
     ModalAnimationComponent,
     ModalBasicComponent,
-    DataFilterPipe
+    DataFilterPipe,
   ],
   exports: [
     AccordionAnchorDirective,

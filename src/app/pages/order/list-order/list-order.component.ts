@@ -23,7 +23,7 @@ export class ListOrderComponent implements OnInit {
 
 
   // Filter
-  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "deleted": false }
+  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "user__mobile__icontains": null, "deleted": false }
   public statusFilter = []
 
   public dateFilter = [
@@ -32,7 +32,7 @@ export class ListOrderComponent implements OnInit {
   ]
 
   clearFilter() {
-    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "deleted": false }
+    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "user__mobile__icontains": null, "archived": false, "deleted": false }
     this.dateFilter = [
       { "label": "FROM", "type": "from", "value": null },
       { "label": "TO", "type": "to", "value": null },
@@ -60,10 +60,21 @@ export class ListOrderComponent implements OnInit {
     this.getData()
   }
 
+
+  changeValueParent(event) {
+    this.offset = 0
+    this.count = 0
+    if (event[0] == 0 && event[0] == 0) {
+      event = "+" + event.slice(2)
+    }
+    this.filter.user__mobile__icontains = event;
+    this.getData()
+  }
   fields = [
     { "key": "total", "label": "GLOBAL.TOTAL", "type": "price" },
     { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
     { "key": "user.first_name", "label": "GLOBAL.OWNER", "type": "object" },
+    { "key": "user.mobile", "label": "GLOBAL.MOBILE", "type": "object" },
     {
       "key": "isDelivery", "label": "GLOBAL.DELIVERYTYPE", "type": "multiValue", "isMultiLevel": false, "state": [
         { "value": true, "label": "GLOBAL.DELIVERYS.DELIVERY", "type": "primary" },

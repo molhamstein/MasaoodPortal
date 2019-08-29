@@ -1,3 +1,4 @@
+import { InputSearchComponent } from './shared/input-search/input-search.component';
 import { TransfereService } from './service/transfere.service';
 import { CenterProductService } from './pages/centerProduct/center-product.service';
 import { AgmCoreModule } from '@agm/core';
@@ -111,7 +112,7 @@ export function HttpLoaderFactory(http: Http) {
     loginComponent,
 
     // // others
-    TableComponent, UploadImgComponent, StatusFilterComponent, DateFilterComponent,
+    TableComponent, UploadImgComponent, StatusFilterComponent, DateFilterComponent,InputSearchComponent,
 
 
 

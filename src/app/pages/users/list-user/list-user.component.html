@@ -7,8 +7,11 @@
   </div>
   <div class="row" style="margin: 0px;">
     <div class="form-group">
-      <input class="form-control" (change)="getFilter()" [(ngModel)]="filter.mobile__icontains" type="text"
-        placeholder="{{'GLOBAL.SEARCHBY'|translate}} {{'GLOBAL.MOBILE'|translate}}">
+      <!-- <input class="form-control" (change)="getFilter()" [(ngModel)]="filter.mobile__icontains" type="text"
+        placeholder="{{'GLOBAL.SEARCHBY'|translate}} {{'GLOBAL.MOBILE'|translate}}"> -->
+      <app-input-search [type]="'number'" (changeValue)="changeValueParent($event)" [placeholder]="'GLOBAL.MOBILE'">
+      </app-input-search>
+
     </div>
 
   </div>
