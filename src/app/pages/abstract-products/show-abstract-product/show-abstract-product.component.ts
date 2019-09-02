@@ -61,7 +61,7 @@ export class ShowAbstractProductComponent implements OnInit {
     { "key": "abstractProduct." + this.languageKey['name'], "label": "GLOBAL.ABSTRACTPRODUCT", "type": "object" },
     { "key": "size." + this.languageKey['name'], "label": "GLOBAL.SIZE", "type": "object" },
     {
-      "type": "buttons", "label": "", "buttons": [
+      "type": "buttons", "label": "", "isIcon": false, "buttons": [
         { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" }]
     }
   ]

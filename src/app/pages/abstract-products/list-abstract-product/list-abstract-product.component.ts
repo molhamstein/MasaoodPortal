@@ -28,7 +28,7 @@ export class ListAbstractProductComponent implements OnInit {
     { "key": "grade." + this.languageKey['name'], "label": "GLOBAL.GRADE", "type": "object" },
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date" },
     {
-      "type": "buttons", "label": "", "buttons": [
+      "type": "buttons", "label": "", "isIcon": false, "buttons": [
         { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" },
         { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" }]
     }

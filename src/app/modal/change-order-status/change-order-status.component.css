@@ -185,3 +185,9 @@
     margin: 8em auto;
   }
 }
+
+.custom-border-input {
+  border-color: #303548;
+  color: #303548;
+  margin: 10px 0px;
+}

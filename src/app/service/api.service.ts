@@ -13,6 +13,7 @@ export class ApiService {
   }
   readonly baseUrl = "http://174.138.28.26:3434/api/v1/"
   // readonly baseUrl = "http://104.217.253.15:3434/api/v1/"
+  // readonly baseUrl = "http://192.168.1.4:8080/api/v1/"
   constURL = {
     "login": "password-auth/login/",
     "uploadImg": "medias/",

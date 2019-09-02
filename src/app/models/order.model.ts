@@ -10,6 +10,7 @@ export class Order {
   createdAt: Date;
   canceledAt: Date;
   deliveredAt: Date;
+  invoice: string;
   assignedAt: Date;
   total: number;
   userId: number;
@@ -27,6 +28,7 @@ export class Order {
     this.total = order.total || 0;
     this.isDelivery = order.isDelivery || false
     this.centerId = order.centerId || null;
+    this.invoice = order.invoice || null
     if (order.center) {
       this.center = new Center(order.center) || null;
       this.centerId = this.center.id

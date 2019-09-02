@@ -29,6 +29,7 @@ export class ChangeOrderStatusComponent implements OnInit {
 
   public center: Center[] = [];
   public status: string;
+  public invoice: string = ""
   public centerId: number;
   public statusList = []
   public roleType = this.mainSer.authServ.getRole()
@@ -39,14 +40,14 @@ export class ChangeOrderStatusComponent implements OnInit {
       return this.message = "ERROR_FORM.CENTER_IS_REQUIRED"
     }
 
-    var data = {}
+    var data = { "invoice": this.invoice }
     var type = ""
     if (this.status == "canceled") {
       type = "cancelOrders"
     }
     else if (this.status == "assigned") {
       type = "assignOrders"
-      data = { "center": this.centerId }
+      data['center'] = this.centerId // { "center": this.centerId }
     }
     else if (this.status == "delivered") {
       type = "deliverOrders"
@@ -91,6 +92,7 @@ export class ChangeOrderStatusComponent implements OnInit {
   ngOnInit() {
     let self = this;
     this.status = this.order.status
+    this.invoice = this.order.invoice
     console.log(this.order)
     this.centerId = this.order.centerId;
     this.centerSer.getAllObject(function (err: appError, data) {

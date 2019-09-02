@@ -23,7 +23,7 @@ export class ListOrderComponent implements OnInit {
 
 
   // Filter
-  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "user__mobile__icontains": null, "deleted": false }
+  public filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "archived": false, "user__mobile__icontains": null, "invoice__icontains": null, "deleted": false }
   public statusFilter = []
 
   public dateFilter = [
@@ -32,7 +32,7 @@ export class ListOrderComponent implements OnInit {
   ]
 
   clearFilter() {
-    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "user__mobile__icontains": null, "archived": false, "deleted": false }
+    this.filter = { "status__in": null, "createdAt__gt": null, "createdAt__lt": null, "center__in": null, "user__mobile__icontains": null, "invoice__icontains": null, "archived": false, "deleted": false }
     this.dateFilter = [
       { "label": "FROM", "type": "from", "value": null },
       { "label": "TO", "type": "to", "value": null },
@@ -70,6 +70,12 @@ export class ListOrderComponent implements OnInit {
     this.filter.user__mobile__icontains = event;
     this.getData()
   }
+  changeInvoiceParent(event) {
+    this.offset = 0
+    this.count = 0
+    this.filter.invoice__icontains = event
+    this.getData()
+  }
   fields = [
     { "key": "total", "label": "GLOBAL.TOTAL", "type": "price" },
     { "key": "status", "label": "GLOBAL.STATUS", "type": "status" },
@@ -81,14 +87,15 @@ export class ListOrderComponent implements OnInit {
         { "value": false, "label": "GLOBAL.DELIVERYS.PICKUP", "type": "info" }
       ]
     },
+    { "key": "invoice", "label": "GLOBAL.INVOICE", "type": "string" },
     { "key": "createdAt", "label": "GLOBAL.CREATED_AT", "type": "date", "viewDate": true },
     {
-      "type": "buttons", "label": "", "buttons": [
-        { "type": "success", "action": "changeState", "label": "GLOBAL.CHANGESTATE" },
-        { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" },
-        { "type": "warning", "action": "archive", "label": "GLOBAL.ARCHIVE" },
-        { "type": "info", "action": "print", "label": "GLOBAL.PRINT" },
-        { "type": "danger", "action": "delete", "label": "GLOBAL.DELETE", "condition": [{ "key": "status", "value": "delivered", "operator": "!=" }] }
+      "type": "buttons", "label": "", "isIcon": true, "buttons": [
+        { "icon": "icofont-exchange", "type": "success", "action": "changeState", "label": "GLOBAL.CHANGESTATE" },
+        { "icon": "icofont-eye-alt", "type": "primary", "action": "show", "label": "GLOBAL.SHOW" },
+        { "icon": "icofont-archive", "type": "warning", "action": "archive", "label": "GLOBAL.ARCHIVE" },
+        { "icon": "icofont-print", "type": "info", "action": "print", "label": "GLOBAL.PRINT" },
+        { "icon": "icofont-ui-delete", "type": "danger", "action": "delete", "label": "GLOBAL.DELETE", "condition": [{ "key": "status", "value": "delivered", "operator": "!=" }] }
       ]
     }
   ]

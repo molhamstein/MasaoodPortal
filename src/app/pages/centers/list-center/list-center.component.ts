@@ -22,7 +22,7 @@ export class ListCenterComponent implements OnInit {
     { "key": "nameEn", "label": "GLOBAL.NAME_EN", "type": "string" },
     { "key": "statesCount", "label": "GLOBAL.STATESCOUNT", "type": "price" },
     {
-      "type": "buttons", "label": "", "buttons": [
+      "type": "buttons", "label": "", "isIcon":false, "buttons": [
         { "type": "success", "action": "edit", "label": "GLOBAL.EDIT" },
         { "type": "primary", "action": "show", "label": "GLOBAL.SHOW" }]
     }

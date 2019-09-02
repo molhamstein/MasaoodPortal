@@ -53,8 +53,8 @@
           <!-- object type -->
           <span *ngIf="oneField.type=='object'">{{getByStringKey(onerow,oneField.key)}}</span>
 
-          <!-- button type -->
-          <div style="display: inline-flex;" *ngIf="oneField.type=='buttons'">
+          <!-- button type and not icon -->
+          <div style="display: inline-flex;" *ngIf="oneField.type=='buttons' && !oneField.isIcon">
             <div style="margin: 5px 5px;float: left;" *ngFor="let oneButton of oneField.buttons">
               <button *ngIf="oneButton.condition==null" (click)="action(onerow.id,oneButton.action,index)"
                 class="btn btn-{{oneButton.type}}" type="button">{{oneButton.label|translate}}
@@ -65,6 +65,20 @@
               </button>
             </div>
           </div>
+          <!-- button type and icon -->
+          <div style="display: inline-flex;" *ngIf="oneField.type=='buttons' && oneField.isIcon">
+            <div style="margin: 5px 5px;float: left;" *ngFor="let oneButton of oneField.buttons">
+              <button *ngIf="oneButton.condition==null" placement="top" ngbTooltip="{{oneButton.label|translate}}"  (click)="action(onerow.id,oneButton.action,index)"
+                class="btn btn-{{oneButton.type}}" type="button">
+                <i class="icofont {{oneButton.icon}}"></i>
+              </button>
+              <button *ngIf="oneButton.condition!=null && checkCondition(onerow,oneButton.condition)"
+                (click)="action(onerow.id,oneButton.action,index)" placement="top" ngbTooltip="{{oneButton.label|translate}}" class="btn btn-{{oneButton.type}}" type="button">
+                <i class="icofont {{oneButton.icon}}"></i>
+              </button>
+            </div>
+          </div>
+
 
           <strong *ngIf="oneField.type=='multiValue'" class="badge badge-{{getFromMultiValue(onerow,oneField).type}}">
             {{getFromMultiValue(onerow,oneField).label|translate}}</strong>

@@ -28,6 +28,11 @@
       <div class="col-sm-6">
         <label *ngIf="message!=''" class="text-danger errorLabel">{{message|translate}}</label>
       </div>
+      <div class="col-sm-12">
+        <input class="form-control custom-border-input" [(ngModel)]="invoice" type="text" placeholder="{{'GLOBAL.INVOICE'|translate}}">
+
+      </div>
+
     </div>
 
     <ul class="cd-buttons">
